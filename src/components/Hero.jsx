@@ -1,13 +1,16 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import { useHlsVideo } from '@/hooks/useHlsVideo.js';
 
 const ROTATING_WORDS = ['Deserves', 'Demands', 'Craves', 'Needs', 'Loves'];
 
-const VIDEO_SRC = '/frames/Grasslands0001-0320.mp4';
+const VIDEO_SRC =
+  'https://stream.mux.com/rR8P8mSaKDzz02TsftugTUdI00cQPJX00oy.m3u8';
 const PIN_PX = 800;
 
 export default function Hero() {
+  const videoRef = useHlsVideo(VIDEO_SRC);
 
   const words = useMemo(() => ROTATING_WORDS, []);
   const [wordIndex, setWordIndex] = useState(0);
@@ -27,7 +30,7 @@ export default function Hero() {
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <video
-            src={VIDEO_SRC}
+            ref={videoRef}
             muted
             playsInline
             autoPlay
