@@ -6,7 +6,7 @@ import { useHlsVideo } from '@/hooks/useHlsVideo.js';
 const ROTATING_WORDS = ['Deserves', 'Demands', 'Craves', 'Needs', 'Loves'];
 
 const VIDEO_SRC =
-  'https://stream.mux.com/rR8P8mSaKDzz02TsftugTUdI00cQPJX00oy.m3u8';
+  'https://stream.mux.com/Ss7jw7o23CbWvmmfOR6fCvsm2v7xQs01WQeDRPGIr00004.m3u8';
 const PIN_PX = 800;
 
 export default function Hero() {
