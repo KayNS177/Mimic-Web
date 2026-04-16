@@ -10,16 +10,7 @@ const LINK_GROUPS = [
   {
     title: 'Company',
     links: [
-      { label: 'About', href: '#about' },
-      { label: 'Contact', href: '#quote' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacy', href: '#privacy' },
-      { label: 'Terms', href: '#terms' },
-      { label: 'Cookies', href: '#cookies' },
+      { label: 'Contact', href: 'https://wa.me/60174018136' },
     ],
   },
 ];
@@ -27,14 +18,15 @@ const LINK_GROUPS = [
 const SOCIALS = [
   { label: 'Instagram', href: '#instagram' },
   { label: 'Dribbble', href: '#dribbble' },
+  { label: 'WhatsApp', href: 'https://wa.me/60174018136' },
 ];
 
 export default function Footer() {
   return (
     <footer className="relative w-full px-6 pt-24 pb-10 border-t border-white/10">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
-          <div className="md:col-span-5 flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row gap-10 md:gap-8">
+          <div className="flex flex-col gap-4 md:max-w-sm">
             <a href="#home" className="inline-flex items-center">
               <span className="text-2xl font-brand font-bold tracking-tight text-white">
                 Mimic.Studio
@@ -52,42 +44,44 @@ export default function Footer() {
             </a>
           </div>
 
-          {LINK_GROUPS.map((group) => (
-            <div key={group.title} className="md:col-span-2 flex flex-col gap-3">
+          <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-36 md:ml-auto">
+            {LINK_GROUPS.map((group) => (
+              <div key={group.title} className="flex flex-col gap-3">
+                <span className="text-xs font-body uppercase tracking-[0.15em] text-white/40">
+                  {group.title}
+                </span>
+                <ul className="flex flex-col gap-2">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-sm font-body text-white/70 hover:text-white transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div className="flex flex-col gap-3">
               <span className="text-xs font-body uppercase tracking-[0.15em] text-white/40">
-                {group.title}
+                Social
               </span>
               <ul className="flex flex-col gap-2">
-                {group.links.map((link) => (
-                  <li key={link.label}>
+                {SOCIALS.map((social) => (
+                  <li key={social.label}>
                     <a
-                      href={link.href}
+                      href={social.href}
                       className="text-sm font-body text-white/70 hover:text-white transition-colors"
                     >
-                      {link.label}
+                      {social.label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-          ))}
-
-          <div className="md:col-span-1 flex flex-col gap-3">
-            <span className="text-xs font-body uppercase tracking-[0.15em] text-white/40">
-              Social
-            </span>
-            <ul className="flex flex-col gap-2">
-              {SOCIALS.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    className="text-sm font-body text-white/70 hover:text-white transition-colors"
-                  >
-                    {social.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 

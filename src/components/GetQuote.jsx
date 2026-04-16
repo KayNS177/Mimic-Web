@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import BlurText from './BlurText.jsx';
+
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 export default function GetQuote() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -14,9 +21,31 @@ export default function GetQuote() {
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (sending) return;
+    setSending(true);
+    setError('');
+    try {
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          'from-name': form.name,
+          'company-name': form.company,
+          'customer-email': form.email,
+          message: form.message,
+        },
+        { publicKey: PUBLIC_KEY },
+      );
+      setSubmitted(true);
+    } catch {
+      setError(
+        'Something went wrong sending your message. Please try again or email us directly.',
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const fieldBase =
@@ -112,6 +141,7 @@ export default function GetQuote() {
                   Tell us about your project
                 </span>
                 <textarea
+                  required
                   rows={5}
                   value={form.message}
                   onChange={update('message')}
@@ -120,17 +150,35 @@ export default function GetQuote() {
                 />
               </label>
 
+              {error && (
+                <div className="md:col-span-2 rounded-xl bg-red-500/10 px-4 py-3 text-sm font-body text-red-200">
+                  {error}
+                </div>
+              )}
+
               <div className="md:col-span-2 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pt-2">
                 <span className="text-xs font-body text-white/40">
                   We reply within one business day. Your info stays with us.
                 </span>
-                <button
-                  type="submit"
-                  className="liquid-glass-strong inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03]"
-                >
-                  Book Free Strategy Call
-                  <ArrowUpRight className="h-4 w-4" />
-                </button>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://wa.me/60174018136"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="liquid-glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03]"
+                  >
+                    WhatsApp
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="liquid-glass-strong inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  >
+                    {sending ? 'Sending...' : 'Book Free Strategy Call'}
+                    {!sending && <ArrowUpRight className="h-4 w-4" />}
+                  </button>
+                </div>
               </div>
             </form>
           )}

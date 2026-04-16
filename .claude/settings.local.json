@@ -7,7 +7,9 @@
       "Bash(mkdir -p public/frames public/images src/components src/assets src/lib src/hooks)",
       "Bash(curl -fsSL \"https://motionsites.ai/assets/hero-finlytic-preview-CV9g0FHP.gif\" -o feature-1.gif)",
       "Bash(curl -fsSL \"https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif\" -o feature-2.gif)",
-      "Bash(ls -la feature-*.gif)"
+      "Bash(ls -la feature-*.gif)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
     ]
   }
 }

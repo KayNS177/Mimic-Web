@@ -1,25 +1,20 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
-import { useHlsVideo } from '@/hooks/useHlsVideo.js';
-
 const ROTATING_WORDS = ['Deserves', 'Demands', 'Craves', 'Needs', 'Loves'];
 
-const VIDEO_SRC =
-  'https://stream.mux.com/Ss7jw7o23CbWvmmfOR6fCvsm2v7xQs01WQeDRPGIr00004.m3u8';
+const VIDEO_SRC = '/frames/Grasslands0001-0320.mp4';
 const PIN_PX = 800;
 
 export default function Hero() {
-  const videoRef = useHlsVideo(VIDEO_SRC);
 
-  const words = useMemo(() => ROTATING_WORDS, []);
   const [wordIndex, setWordIndex] = useState(0);
   useEffect(() => {
     const id = setTimeout(() => {
-      setWordIndex((i) => (i + 1) % words.length);
+      setWordIndex((i) => (i + 1) % ROTATING_WORDS.length);
     }, 2000);
     return () => clearTimeout(id);
-  }, [wordIndex, words]);
+  }, [wordIndex]);
 
   return (
     <section
@@ -30,14 +25,14 @@ export default function Hero() {
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <video
-            ref={videoRef}
+            src={VIDEO_SRC}
             muted
             playsInline
             autoPlay
             loop
             preload="auto"
             disablePictureInPicture
-            className="w-full h-full object-cover block"
+            className="w-full h-full object-cover block object-[center_80%]"
             style={{
               maskImage:
                 'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)',
@@ -95,7 +90,7 @@ export default function Hero() {
             </span>
             <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-2 text-6xl md:text-7xl lg:text-[6rem] font-heading italic leading-[0.9]">
               &nbsp;
-              {words.map((word, i) => (
+              {ROTATING_WORDS.map((word, i) => (
                 <motion.span
                   key={word}
                   className="absolute font-heading italic"

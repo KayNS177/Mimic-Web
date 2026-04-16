@@ -8,7 +8,7 @@ const ROWS = [
   {
     id: 'convert',
     reverse: false,
-    title: 'Designed to convert. Built to perform.',
+    title: 'Built to perform. Designed to convert.',
     body: 'Every pixel is intentional. Our team combines expert web design with Google SEO optimization. Crafting sites that rank higher, perform faster, and convert more visitors.',
     cta: 'Learn more',
     gif: feature1,
@@ -17,7 +17,7 @@ const ROWS = [
     id: 'smart',
     reverse: true,
     title: 'Track everything. Improve constantly.',
-    body: 'We configure Google Analytics and conversion tracking so nothing goes unmeasured. See exactly how visitors behave and use that data to grow.',
+    body: 'We configure Vercel and conversion tracking so nothing goes unmeasured. See exactly how visitors behave and use that data to grow.',
     cta: 'See how it works',
     gif: feature2,
   },
