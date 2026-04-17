@@ -9,7 +9,8 @@
       "Bash(curl -fsSL \"https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif\" -o feature-2.gif)",
       "Bash(ls -la feature-*.gif)",
       "Bash(npm install *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npm i *)"
     ]
   }
 }

@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import BlurText from './BlurText.jsx';
 import feature1 from '@/assets/feature-1.gif';
 import feature2 from '@/assets/feature-2.gif';
+import feature3 from '@/assets/Feature_3.gif';
 
 const ROWS = [
   {
@@ -21,13 +22,21 @@ const ROWS = [
     cta: 'See how it works',
     gif: feature2,
   },
+  {
+    id: 'responsive',
+    reverse: false,
+    title: 'Flawless on every screen.',
+    body: 'Every site we build is fully mobile responsive. Layouts, type, and interactions adapt fluidly from phone to desktop, so your visitors get a seamless experience wherever they land.',
+    cta: 'See it in action',
+    gif: feature3,
+  },
 ];
 
 export default function FeaturesChess() {
   return (
     <section
       id="services"
-      className="relative w-full h-full px-6 py-10 md:py-14 flex items-center"
+      className="relative w-full h-full px-6 py-10 md:py-14 mt-24 md:mt-32 flex items-center"
     >
       <div className="mx-auto max-w-6xl w-full">
         <div className="text-center flex flex-col items-center">

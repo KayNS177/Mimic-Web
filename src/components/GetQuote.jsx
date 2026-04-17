@@ -160,12 +160,12 @@ export default function GetQuote() {
                 <span className="text-xs font-body text-white/40">
                   We reply within one business day. Your info stays with us.
                 </span>
-                <div className="flex items-center gap-3">
+                <div className="grid grid-cols-2 gap-3 w-full md:w-auto">
                   <a
                     href="https://wa.me/60174018136"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="liquid-glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03]"
+                    className="liquid-glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03] md:min-w-[220px]"
                   >
                     WhatsApp
                     <ArrowUpRight className="h-4 w-4" />
@@ -173,7 +173,7 @@ export default function GetQuote() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="liquid-glass-strong inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
+                    className="liquid-glass-strong inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100 md:min-w-[220px]"
                   >
                     {sending ? 'Sending...' : 'Book Free Strategy Call'}
                     {!sending && <ArrowUpRight className="h-4 w-4" />}

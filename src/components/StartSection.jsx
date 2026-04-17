@@ -3,16 +3,16 @@ import { motion } from 'motion/react';
 import BlurText from './BlurText.jsx';
 import VideoBackdrop from './VideoBackdrop.jsx';
 
-const HLS = 'https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8';
+const VIDEO_SRC = '/frames/Web_BG10001-0240.mp4';
 
 export default function StartSection() {
   return (
     <section
       id="process"
-      className="relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden mt-24 md:mt-32"
       style={{ minHeight: 500 }}
     >
-      <VideoBackdrop src={HLS} fadeHeight={200} />
+      <VideoBackdrop src={VIDEO_SRC} fadeHeight={200} />
 
       <div className="relative z-10 flex flex-col items-center text-center px-6 pt-64 md:pt-80 pb-40 md:pb-48">
         <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
