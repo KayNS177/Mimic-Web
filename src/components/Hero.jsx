@@ -128,7 +128,7 @@ export default function Hero() {
               href="#quote"
               className="liquid-glass-strong inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-base md:text-lg font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03]"
             >
-              Get Started
+              Build your Website Now
               <ArrowUpRight className="h-5 w-5" />
             </a>
           </motion.div>

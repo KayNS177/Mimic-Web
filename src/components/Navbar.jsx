@@ -45,7 +45,7 @@ export default function Navbar() {
               href="#quote"
               className="ml-1 inline-flex items-center gap-1 bg-white text-black rounded-full px-3.5 py-1.5 text-sm font-medium transition-transform duration-300 ease-out hover:scale-[1.03]"
             >
-              Get Started
+              Build your Website Now
               <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
@@ -139,7 +139,7 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className="inline-flex items-center gap-1 bg-white text-black rounded-full px-4 py-2 text-sm font-medium"
                 >
-                  Get Started
+                  Build your Website Now
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </a>
               </motion.li>
