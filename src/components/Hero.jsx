@@ -33,23 +33,6 @@ export default function Hero() {
             preload="auto"
             disablePictureInPicture
             className="w-full h-full object-cover block object-[center_80%]"
-            style={{
-              maskImage:
-                'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)',
-              WebkitMaskImage:
-                'linear-gradient(to bottom, black 0%, black 82%, transparent 100%)',
-            }}
-          />
-          <div
-            className="absolute inset-x-0 bottom-0 h-[28%] pointer-events-none"
-            style={{
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              maskImage:
-                'linear-gradient(to bottom, transparent 0%, black 85%)',
-              WebkitMaskImage:
-                'linear-gradient(to bottom, transparent 0%, black 85%)',
-            }}
           />
         </div>
 

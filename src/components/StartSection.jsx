@@ -35,7 +35,7 @@ export default function StartSection() {
           className="mt-6 max-w-xl text-white/60 font-body font-light text-sm md:text-base"
         >
           Share your vision. Our web design and development team manages everything,
-          from design, code, launch. Professional websites delivered in days, not months.
+          from design, code, to launch. Professional websites delivered in days, not months.
         </motion.p>
 
         <motion.div
