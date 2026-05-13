@@ -4,7 +4,6 @@ import { ArrowUpRight } from 'lucide-react';
 const ROTATING_WORDS = ['Deserves', 'Demands', 'Craves', 'Needs', 'Loves'];
 
 const VIDEO_SRC = '/frames/Grasslands0001-0320.mp4';
-const PIN_PX = 800;
 
 export default function Hero() {
 
@@ -19,10 +18,9 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative"
-      style={{ height: `calc(100vh + ${PIN_PX}px)` }}
+      className="relative h-screen"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
+      <div className="h-full w-full overflow-hidden">
         <div className="absolute inset-0 z-0" aria-hidden="true">
           <video
             src={VIDEO_SRC}
