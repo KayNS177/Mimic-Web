@@ -13,6 +13,7 @@ const ROWS = [
     body: 'Every pixel is intentional. Our team combines expert web design with Google SEO optimization. Crafting sites that rank higher, perform faster, and convert more visitors.',
     cta: 'Learn more',
     gif: feature1,
+    alt: 'Responsive web design mockup showing SEO-optimized mobile and desktop layouts designed for high conversion rates',
   },
   {
     id: 'smart',
@@ -21,6 +22,7 @@ const ROWS = [
     body: 'We configure Vercel and conversion tracking so nothing goes unmeasured. See exactly how visitors behave and use that data to grow.',
     cta: 'See how it works',
     gif: feature2,
+    alt: 'Vercel analytics dashboard displaying website performance metrics, conversion tracking, and user behavior data',
   },
   {
     id: 'responsive',
@@ -29,6 +31,7 @@ const ROWS = [
     body: 'Every site we build is fully mobile responsive. Layouts, type, and interactions adapt fluidly from phone to desktop, so your visitors get a seamless experience wherever they land.',
     cta: 'See it in action',
     gif: feature3,
+    alt: 'Mobile responsive website design seamlessly adapting across smartphone, tablet, and desktop devices with fluid layouts',
   },
 ];
 
@@ -99,7 +102,7 @@ export default function FeaturesChess() {
               >
                 <img
                   src={row.gif}
-                  alt=""
+                  alt={row.alt}
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />

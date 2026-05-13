@@ -16,8 +16,6 @@ const LINK_GROUPS = [
 ];
 
 const SOCIALS = [
-  { label: 'Instagram', href: '#instagram' },
-  { label: 'Dribbble', href: '#dribbble' },
   { label: 'WhatsApp', href: 'https://wa.me/60174018136' },
 ];
 

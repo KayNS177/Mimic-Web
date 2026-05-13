@@ -10,7 +10,9 @@
       "Bash(ls -la feature-*.gif)",
       "Bash(npm install *)",
       "Bash(npm run *)",
-      "Bash(npm i *)"
+      "Bash(npm i *)",
+      "Bash(python scripts/fetch_page.py \"https://mimicstudio.co/\")",
+      "WebFetch(domain:mimicstudio.co)"
     ]
   }
 }
