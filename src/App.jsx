@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar.jsx';
@@ -42,6 +43,9 @@ export default function App() {
 
   return (
     <>
+      <Helmet>
+        <link rel="canonical" href="https://mimicstudio.co/" />
+      </Helmet>
       <LoadingScreen show={loading} />
       <Analytics />
       <SpeedInsights />
