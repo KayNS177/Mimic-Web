@@ -41,16 +41,16 @@ export default function CtaFooter() {
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
           <a
-            href="#book"
+            href="#quote"
             className="liquid-glass-strong inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-body font-medium text-white transition-transform duration-300 ease-out hover:scale-[1.03]"
           >
             Book a Call
           </a>
           <a
-            href="#pricing"
+            href="#solutions"
             className="inline-flex items-center gap-2 rounded-full bg-white text-black px-6 py-3 text-sm font-body font-medium transition-transform duration-300 ease-out hover:scale-[1.03]"
           >
-            View Pricing
+            Explore Solutions
           </a>
         </motion.div>
 
@@ -60,13 +60,13 @@ export default function CtaFooter() {
           </span>
           <nav className="flex items-center gap-5">
             <a
-              href="#privacy"
+              href="/privacy.html"
               className="text-white/40 hover:text-white/80 text-xs font-body transition-colors"
             >
               Privacy
             </a>
             <a
-              href="#terms"
+              href="/terms.html"
               className="text-white/40 hover:text-white/80 text-xs font-body transition-colors"
             >
               Terms

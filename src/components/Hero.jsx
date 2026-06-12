@@ -56,7 +56,7 @@ export default function Hero() {
             className="liquid-glass rounded-full px-4 py-1 flex items-center gap-2"
           >
             <span className="text-xs md:text-sm text-white/90 font-body">
-              Custom Web Design that Converts.
+              B2B & B2C Web Design that Converts.
             </span>
           </motion.div>
 
@@ -95,8 +95,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
             className="mt-6 max-w-md text-center text-sm md:text-base text-white font-body font-light leading-tight"
           >
-            Stunning web design. Blazing fast performance. Built by experts, every pixel refined.
-            This is modern web design, wildly reimagined.
+            Stunning web design for B2B and B2C brands. Blazing fast performance.
+            Built by experts, every pixel refined. This is modern web design, wildly reimagined.
           </motion.p>
 
           <motion.div

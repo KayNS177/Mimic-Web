@@ -1,887 +1,197 @@
-# SEO Action Plan: Mimic.Studio
-**Prioritized Recommendations with Effort Estimates**
+# SEO Action Plan — Mimic.Studio
+
+**Generated:** June 12, 2026 · from FULL-AUDIT-REPORT.md (Health Score: 42/100)
+**Priorities:** Critical = fix immediately · High = within 1 week · Medium = within 1 month · Low = backlog
 
 ---
 
-## ✅ PROGRESS SUMMARY
+## CRITICAL
 
-**Last Updated:** May 13, 2026
+### C1. Deploy the pending local changes
+The live site (deployed May 29) still says "Luxury web design" in title/schema/footer and 404s on `/llms.txt`. The local repo already fixes all of this (B2B & B2C repositioning + `public/llms.txt`).
+**Action:** commit and push. Verify after deploy: `https://mimicstudio.co/llms.txt` returns 200; title shows "B2B & B2C Website Design Agency".
 
-### Completed Tasks (P0 - Critical Priority)
-- ✅ **Create robots.txt** - Search engines can now properly crawl the site
-- ✅ **Implement Core Schema.org Markup** - ProfessionalService + WebSite schema added
-- ✅ **Add Image Alt Text** - All feature images now have descriptive alt attributes
-- ✅ **Generate XML Sitemap** - sitemap.xml created and ready for GSC submission
-- ✅ **Fix Social Media Links** - Removed placeholder links, no broken UX
+### C2. Prerender the page (fix the empty-body SPA)
+The served HTML body is `<div id="root"></div>` — AI crawlers and many bots see no content; passage citability is ~0.
+**Action:** add build-time prerendering to the Vite app (e.g., `vite-plugin-prerender` / SSG pass rendering the React tree to static HTML, hydrating on load). Interim stopgap: a `<noscript>` block summarizing services, process, pricing, contact.
+**Do NOT** serve `index.legacy.html` as the shell — it is an outdated design with different (GBP) pricing.
 
-**Impact:** SEO Score improved from 68 → ~83-88 (estimated +15-20 points)
+### C3. Create real Privacy Policy & Terms pages
+`#privacy` and `#terms` in the footer are dead anchors while the quote form collects personal data (GDPR / Malaysia PDPA exposure, and a Google quality-rater trust signal).
+**Action:** add `/privacy` and `/terms` (real routes or static HTML pages) and point the footer links at them.
 
-### Next Steps
-1. Submit sitemap.xml to Google Search Console
-2. Validate schema markup using Google Rich Results Test
-3. Continue with HIGH PRIORITY tasks (P1)
-
----
-
-## 🔴 CRITICAL - Fix Immediately (Week 1)
-
-### 1. Create robots.txt ✅ COMPLETED
-**Impact:** High | **Effort:** 5 minutes | **Priority:** P0
-
-**Problem:** No robots.txt file exists, search engines lack crawl guidance.
-
+### C4. Tame the 52 MB media payload
+33.5 MB hero MP4 + 18.5 MB of GIFs, all uncached. Estimated mobile Lighthouse: 25–40.
 **Action:**
-1. Create file at `/public/robots.txt`
-2. Add content:
-```
-User-agent: *
-Allow: /
-
-Sitemap: https://mimicstudio.co/sitemap.xml
-```
-
-**Expected Result:** Search engines can properly crawl and index the site.
-
-**✅ Status:** Completed - robots.txt created at `/public/robots.txt`
+1. Re-encode hero video to ≤5 MB (720p H.264), add a `poster` image preloaded with `fetchpriority="high"`.
+2. Convert the three feature GIFs to `<video autoplay loop muted playsinline>` (≈90% smaller) and lazy-load them (below the fold).
+3. Add cache headers — see `vercel.json` snippet below.
 
 ---
 
-### 2. Implement Core Schema.org Markup ✅ COMPLETED
-**Impact:** High | **Effort:** 2-3 hours | **Priority:** P0
+## HIGH
 
-**Problem:** Zero structured data = no rich snippets, reduced visibility.
-
-**Action:**
-Add JSON-LD scripts to `index.html` `<head>`:
-
+### H1. Add canonical, OG/Twitter tags, favicon, meta robots to `index.html`
 ```html
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Mimic.Studio",
-  "description": "Luxury web design agency creating high-converting, SEO-optimized websites",
-  "url": "https://mimicstudio.co",
-  "telephone": "+60174018136",
-  "priceRange": "$$",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Malaysia"
-  },
-  "sameAs": [
-    "[YOUR_INSTAGRAM_URL]",
-    "[YOUR_DRIBBBLE_URL]"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+60174018136",
-    "contactType": "Customer Service",
-    "availableLanguage": "English"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Mimic.Studio",
-  "url": "https://mimicstudio.co",
-  "description": "Expert web design agency creating high-converting websites"
-}
-</script>
+<link rel="canonical" href="https://mimicstudio.co/" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mimicstudio.co/" />
+<meta property="og:title" content="Mimic.Studio | B2B & B2C Website Design Agency" />
+<meta property="og:description" content="B2B & B2C website design agency creating high-converting, SEO-optimized websites. Custom responsive design, blazing performance." />
+<meta property="og:image" content="https://mimicstudio.co/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://mimicstudio.co/og-image.jpg" />
 ```
+Create a 1200×630 `og-image.jpg` and a favicon set in `public/`.
 
-**Expected Result:** Rich snippets in search results, improved CTR.
+### H2. Fix www redirect (307 → permanent)
+In Vercel domain settings, set `mimicstudio.co` as the primary domain so `www` 308-redirects permanently.
 
-**✅ Status:** Completed - ProfessionalService and WebSite schema added to `index.html`
-
----
-
-### 3. Add Image Alt Text ✅ COMPLETED
-**Impact:** High | **Effort:** 30 minutes | **Priority:** P0
-
-**Problem:** All feature images missing alt attributes = accessibility fail + lost image SEO.
-
-**Action:**
-Update `src/components/FeaturesChess.jsx` around line 100:
-
-```jsx
-<img 
-  src={feature1} 
-  alt="Responsive web design mockup showing SEO-optimized layouts for mobile and desktop conversion"
-  loading="lazy"
-  className="w-full h-full object-cover"
-/>
-```
-
-```jsx
-<img 
-  src={feature2} 
-  alt="Vercel analytics dashboard displaying website performance metrics and user behavior tracking"
-  loading="lazy"
-  className="w-full h-full object-cover"
-/>
-```
-
-```jsx
-<img 
-  src={feature3} 
-  alt="Mobile responsive website seamlessly adapting across smartphone, tablet, and desktop devices"
-  loading="lazy"
-  className="w-full h-full object-cover"
-/>
-```
-
-**Expected Result:** Improved accessibility score, image search visibility, and SEO signals.
-
-**✅ Status:** Completed - Alt text added to all feature images in `FeaturesChess.jsx`
-
----
-
-### 4. Generate XML Sitemap ✅ COMPLETED
-**Impact:** High | **Effort:** 1 hour | **Priority:** P0
-
-**Problem:** No sitemap = search engines may miss content.
-
-**Action:**
-1. Create `/public/sitemap.xml`:
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://mimicstudio.co/</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-</urlset>
-```
-
-2. Submit to Google Search Console
-3. Add to robots.txt (already included in step 1)
-
-**Expected Result:** Faster discovery and indexing of content.
-
-**✅ Status:** Completed - sitemap.xml created at `/public/sitemap.xml`. Next step: Submit to Google Search Console
-
----
-
-### 5. Fix Social Media Links ✅ COMPLETED
-**Impact:** Medium | **Effort:** 10 minutes | **Priority:** P0
-
-**Problem:** Footer has placeholder links (#instagram, #dribbble) = broken UX.
-
-**Action:**
-Update `src/components/Footer.jsx` lines 18-22:
-
-```jsx
-const SOCIALS = [
-  { label: 'Instagram', href: 'https://instagram.com/mimicstudio' }, // Update with real URL
-  { label: 'Dribbble', href: 'https://dribbble.com/mimicstudio' }, // Update with real URL
-  { label: 'WhatsApp', href: 'https://wa.me/60174018136' },
-];
-```
-
-**Or remove** if accounts don't exist yet.
-
-**Expected Result:** No broken links, better user trust.
-
-**✅ Status:** Completed - Removed placeholder Instagram/Dribbble links from `Footer.jsx`, kept WhatsApp only
-
----
-
-## 🟠 HIGH PRIORITY - Fix Within 2 Weeks
-
-### 6. Optimize Meta Tags
-**Impact:** High | **Effort:** 30 minutes | **Priority:** P1
-
-**Problem:** Title/description not keyword-optimized, missing CTA in description.
-
-**Action:**
-Update `index.html` lines 7-11:
-
-```html
-<title>Mimic.Studio | Custom Web Design Agency | SEO-Optimized Websites</title>
-<meta
-  name="description"
-  content="Expert web design agency creating high-converting, SEO-optimized websites. Custom responsive design, blazing performance, and conversion-focused results. Get a free quote today."
-/>
-```
-
-**Expected Result:** Better click-through rates from search results, keyword targeting.
-
----
-
-### 7. Add Canonical Tags
-**Impact:** Medium | **Effort:** 1 hour | **Priority:** P1
-
-**Problem:** Missing canonical tags = duplicate content risk.
-
-**Action:**
-Install `react-helmet-async`:
-```bash
-npm install react-helmet-async
-```
-
-Update `src/main.jsx`:
-```jsx
-import { HelmetProvider } from 'react-helmet-async';
-
-<HelmetProvider>
-  <App />
-</HelmetProvider>
-```
-
-In `src/App.jsx`:
-```jsx
-import { Helmet } from 'react-helmet-async';
-
-// Inside App component
-<Helmet>
-  <link rel="canonical" href="https://mimicstudio.co/" />
-</Helmet>
-```
-
-**Expected Result:** Clear canonical URL, prevents duplicate content issues.
-
----
-
-### 8. Expand Homepage Content
-**Impact:** Very High | **Effort:** 4-6 hours | **Priority:** P1
-
-**Problem:** Thin content (~200-300 words) limits topical authority and ranking potential.
-
-**Action:**
-Add these sections to homepage:
-
-**a) Detailed Service Descriptions** (200 words)
-- Expand "Capabilities" section
-- Add specifics: technologies used, process steps, deliverables
-
-**b) Client Testimonials Section** (150 words)
-- 3 testimonials with:
-  - Client name + company
-  - Project type
-  - Measurable result
-  - Photo/logo
-
-**c) "Why Choose Mimic.Studio"** (200 words)
-- 4-5 unique value propositions
-- Credentials/experience
-- Guarantees/promises
-
-**d) Process Breakdown** (150 words)
-- Expand "You dream it. We ship it."
-- Add 4-5 specific steps
-- Timeline expectations
-
-**Target:** 800-1,000 total words on homepage.
-
-**Expected Result:** Improved rankings, lower bounce rate, better conversions.
-
----
-
-### 9. Implement Server-Side Rendering (SSR)
-**Impact:** Very High | **Effort:** 8-16 hours | **Priority:** P1
-
-**Problem:** JavaScript rendering dependency = indexing challenges.
-
-**Action Options:**
-
-**Option A: Migrate to Next.js** (Recommended)
-- Best long-term SEO solution
-- Effort: 12-16 hours
-- Maintains React components
-- Built-in SSR/SSG
-
-**Option B: Use React Snap** (Quick fix)
-- Pre-renders static HTML
-- Effort: 2-4 hours
-- Good for single-page sites
-
-```bash
-npm install react-snap
-```
-
-Add to `package.json`:
-```json
-"scripts": {
-  "postbuild": "react-snap"
-},
-"reactSnap": {
-  "inlineCss": true
-}
-```
-
-**Expected Result:** Fully indexable HTML, improved search visibility.
-
----
-
-### 10. Create llms.txt File
-**Impact:** Medium | **Effort:** 30 minutes | **Priority:** P1
-
-**Problem:** No AI crawler guidance = missed AI search opportunities.
-
-**Action:**
-Create `/public/llms.txt`:
-
-```
-# Mimic.Studio - Web Design Agency
-
-## About
-Mimic.Studio is a luxury web design agency specializing in high-converting, SEO-optimized websites. We combine expert design with cutting-edge performance optimization to deliver websites that rank higher, load faster, and convert more visitors into customers.
-
-## Services
-- Custom Web Design & Development
-- SEO Optimization & Google Rankings
-- Responsive Mobile-First Design
-- Conversion Rate Optimization
-- Performance Optimization & Speed
-- Analytics Integration & Tracking
-- Vercel Deployment & Hosting
-
-## Technologies
-React, Tailwind CSS, Framer Motion, EmailJS, Vercel Analytics, Vercel Speed Insights
-
-## Process
-1. Discovery Call - Understanding your vision and goals
-2. Design Phase - Creating stunning, brand-aligned designs
-3. Development - Building with modern, performant code
-4. Testing - Ensuring flawless cross-device experience
-5. Launch - Deploying with monitoring and analytics
-6. Support - Ongoing optimization and improvements
-
-## Contact
-Website: https://mimicstudio.co
-WhatsApp: +60174018136
-Email: [ADD IF AVAILABLE]
-
-## Locations Served
-Malaysia and international clients
-
-## Keywords
-web design agency, custom website development, SEO web design, responsive design, high-converting websites, performance optimization, luxury web design
-```
-
-**Expected Result:** Better AI search visibility (ChatGPT, Perplexity, etc.)
-
----
-
-### 11. Optimize Video Files
-**Impact:** High | **Effort:** 2-4 hours | **Priority:** P1
-
-**Problem:** Large video files impact Largest Contentful Paint (LCP) and mobile performance.
-
-**Action:**
-
-**Step 1: Compress existing videos**
-- Use HandBrake or FFmpeg
-- Target: <2MB per video
-- Settings: H.264, CRF 28-32
-
-**Step 2: Create WebM versions**
-```bash
-ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 30 -b:v 0 output.webm
-```
-
-**Step 3: Implement lazy loading**
-Update `Hero.jsx` line 27:
-```jsx
-<video
-  src={VIDEO_SRC}
-  muted
-  playsInline
-  autoPlay
-  loop
-  preload="metadata" // Change from "auto"
-  loading="lazy"
-  disablePictureInPicture
-  className="w-full h-full object-cover block object-[center_80%]"
-/>
-```
-
-**Step 4: Add poster images**
-```jsx
-<video
-  poster="/posters/hero-poster.jpg"
-  // ... other props
-/>
-```
-
-**Expected Result:** Improved LCP, better mobile performance, higher Core Web Vitals scores.
-
----
-
-## 🟡 MEDIUM PRIORITY - Fix Within 1 Month
-
-### 12. Add Dedicated Pages
-**Impact:** Very High | **Effort:** 16-24 hours | **Priority:** P2
-
-**Problem:** Single-page site limits content depth and keyword targeting.
-
-**Action:**
-Create these pages with React Router:
-
-1. **/services** - Detailed service descriptions (800+ words)
-2. **/portfolio** - Case studies with before/after, results (600+ words each)
-3. **/about** - Team, story, credentials (500+ words)
-4. **/blog** - Content hub for articles (initially empty, plan 10-15 posts)
-5. **/contact** - Dedicated contact page with map if applicable
-
-**Expected Result:** 
-- 5-10x keyword targeting opportunities
-- Internal linking structure
-- Topic authority building
-- More indexed pages
-
----
-
-### 13. Create FAQ Section
-**Impact:** Medium | **Effort:** 3-4 hours | **Priority:** P2
-
-**Problem:** Missing voice search opportunities and common question answers.
-
-**Action:**
-
-**Step 1: Add FAQ section to homepage**
-Create `src/components/Faq.jsx`:
-
-```jsx
-const FAQS = [
-  {
-    question: "How much does a custom website design cost?",
-    answer: "Our custom web design projects typically range from $3,000 to $15,000 depending on complexity, features, and timeline. We provide detailed quotes after understanding your specific needs during a free consultation call."
-  },
-  {
-    question: "How long does it take to design and build a website?",
-    answer: "Most projects are completed within 2-4 weeks from kickoff to launch. Timeline depends on project scope, content readiness, and revision rounds. We prioritize speed without compromising quality."
-  },
-  {
-    question: "Will my website be mobile-friendly and responsive?",
-    answer: "Absolutely. Every website we build is fully responsive and optimized for all devices - smartphones, tablets, and desktops. Mobile-first design is standard in all our projects."
-  },
-  {
-    question: "Do you provide SEO services with web design?",
-    answer: "Yes, SEO optimization is integrated into every project. We implement technical SEO, on-page optimization, schema markup, and performance optimization to help your site rank higher on Google."
-  },
-  {
-    question: "What platform or technology do you use to build websites?",
-    answer: "We build with modern technologies like React, Next.js, and Tailwind CSS for maximum performance and flexibility. All sites are hosted on Vercel for blazing-fast loading speeds and reliability."
-  },
-  {
-    question: "Will I be able to update the website content myself?",
-    answer: "Yes, we can integrate content management systems (CMS) if you need to make regular updates. We also provide training and documentation. For technical updates, we offer ongoing support packages."
-  },
-  {
-    question: "Do you offer website maintenance and support?",
-    answer: "Yes, we provide ongoing maintenance, security updates, performance monitoring, and content updates through monthly support packages. We're here for the long term."
-  },
-  {
-    question: "Can you help with website redesign or improving an existing site?",
-    answer: "Absolutely. We specialize in redesigns and optimization of existing websites. We analyze your current site, identify improvement opportunities, and create a modern, high-performing replacement."
-  }
-];
-```
-
-**Step 2: Add FAQ Schema**
-```jsx
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How much does a custom website design cost?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our custom web design projects typically range from $3,000 to $15,000..."
-      }
-    }
-    // ... repeat for each FAQ
-  ]
-}
-</script>
-```
-
-**Expected Result:** Featured snippets, voice search visibility, reduced support questions.
-
----
-
-### 14. Implement E-E-A-T Signals
-**Impact:** High | **Effort:** 6-8 hours | **Priority:** P2
-
-**Problem:** Limited expertise, authoritativeness, trustworthiness signals.
-
-**Action:**
-
-**a) Add "About Us" / "Team" Section**
-- Team photos
-- Individual bios (100-150 words each)
-- Credentials, certifications, years of experience
-- LinkedIn profiles
-
-**b) Add Client Testimonials with Attribution**
-- Full name + company
-- Company logo
-- Link to client website
-- Project details
-- Measurable results ("increased conversions by 40%")
-- Date of project
-
-**c) Create 2-3 Detailed Case Studies**
-Each should include:
-- Client background
-- Challenge/problem
-- Solution approach
-- Implementation details
-- Results with metrics
-- Client quote
-- Before/after screenshots
-
-**d) Add Trust Badges**
-- Partner logos (Vercel, Google)
-- "Years in Business"
-- "Projects Completed"
-- Security badges if applicable
-
-**Expected Result:** Improved trust signals, higher conversion rates, better rankings for competitive terms.
-
----
-
-### 15. Optimize Images for SEO
-**Impact:** Medium | **Effort:** 3-4 hours | **Priority:** P2
-
-**Problem:** Non-descriptive filenames, inefficient formats, missing optimization.
-
-**Action:**
-
-**Step 1: Rename image files**
-```
-feature-1.gif → responsive-web-design-mobile-desktop.gif
-feature-2.gif → conversion-tracking-analytics-dashboard.gif
-Feature_3.gif → mobile-responsive-website-all-devices.gif
-```
-
-**Step 2: Convert to modern formats**
-- Install WebP converter
-- Create WebP versions of all images
-- Keep originals as fallbacks
-
-**Step 3: Implement responsive images**
-```jsx
-<picture>
-  <source
-    srcSet="/assets/responsive-web-design.webp"
-    type="image/webp"
-  />
-  <source
-    srcSet="/assets/responsive-web-design.gif"
-    type="image/gif"
-  />
-  <img
-    src="/assets/responsive-web-design.gif"
-    alt="Responsive web design mockup showing mobile and desktop layouts"
-    loading="lazy"
-    width="800"
-    height="500"
-  />
-</picture>
-```
-
-**Step 4: Add width/height attributes**
-- Prevents Cumulative Layout Shift (CLS)
-- Add to all images
-
-**Expected Result:** Better image search rankings, reduced file sizes, improved CLS.
-
----
-
-### 16. Add Security Headers
-**Impact:** Medium | **Effort:** 1-2 hours | **Priority:** P2
-
-**Problem:** Missing security headers may affect rankings and security.
-
-**Action:**
-Create `vercel.json` in project root:
-
+### H3. Add `vercel.json` — cache + security headers
 ```json
 {
   "headers": [
     {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/frames/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
       ]
     }
   ]
 }
 ```
 
-**Expected Result:** Improved security posture, better trust signals.
+### H4. Replace the JSON-LD blocks
+`ProfessionalService` is a LocalBusiness subtype requiring a street address (we have none) — switch to `Organization`; fix `priceRange`; add email/logo/sameAs; link blocks by `@id`; add FAQPage.
 
----
-
-### 17. Implement Lazy Loading Site-Wide
-**Impact:** Medium | **Effort:** 2 hours | **Priority:** P2
-
-**Problem:** All resources load immediately = slower initial page load.
-
-**Action:**
-
-**Step 1: Add lazy loading to images** (done in step 3)
-
-**Step 2: Lazy load below-fold videos**
-Update `StartSection.jsx`:
-```jsx
-<video
-  src={VIDEO_SRC}
-  muted
-  playsInline
-  loop
-  preload="none"
-  loading="lazy"
-/>
-```
-
-**Step 3: Defer EmailJS loading**
-```jsx
-// Only load EmailJS when form is in viewport
-import { useEffect, useRef, useState } from 'react';
-
-const [emailjsLoaded, setEmailjsLoaded] = useState(false);
-const formRef = useRef(null);
-
-useEffect(() => {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !emailjsLoaded) {
-      import('@emailjs/browser').then(() => {
-        setEmailjsLoaded(true);
-      });
-    }
-  });
-  
-  if (formRef.current) {
-    observer.observe(formRef.current);
+**Block 1 — Organization (replaces ProfessionalService):**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://mimicstudio.co/#organization",
+  "name": "Mimic.Studio",
+  "description": "B2B and B2C website design agency creating high-converting, SEO-optimized websites. Expert team delivering custom responsive web design, blazing performance, and conversion optimization.",
+  "url": "https://mimicstudio.co",
+  "logo": { "@type": "ImageObject", "url": "https://mimicstudio.co/logo.png" },
+  "image": "https://mimicstudio.co/logo.png",
+  "email": "knsidik@gmail.com",
+  "telephone": "+60174018136",
+  "priceRange": "$3,000 – $15,000",
+  "areaServed": [
+    { "@type": "Country", "name": "Malaysia" },
+    { "@type": "AdministrativeArea", "name": "Worldwide" }
+  ],
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+60174018136",
+    "email": "knsidik@gmail.com",
+    "contactType": "customer service",
+    "availableLanguage": "English"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Web Design Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2B Website Design", "description": "Lead-generating websites for business-to-business companies" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2C Website Design", "description": "Conversion-focused websites that turn consumers into customers" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Web Design", "description": "Bespoke website design tailored to your brand" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO Optimization", "description": "Search engine optimization for higher rankings" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Responsive Design", "description": "Mobile-first responsive website development" } }
+    ]
   }
-  
-  return () => observer.disconnect();
-}, [emailjsLoaded]);
+}
+```
+Fill `sameAs` with real profile URLs (LinkedIn etc.) and `logo.png` with an actual asset before deploying.
+
+**Block 2 — WebSite (update):**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://mimicstudio.co/#website",
+  "name": "Mimic.Studio",
+  "url": "https://mimicstudio.co",
+  "description": "B2B and B2C website design agency creating high-converting, SEO-optimized websites",
+  "publisher": { "@id": "https://mimicstudio.co/#organization" }
+}
 ```
 
-**Expected Result:** Faster initial load, improved LCP and TTI.
+**Block 3 — FAQPage (new, mirrors llms.txt Q&As — also publish these on-page):**
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Will my website be mobile-friendly?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, every website is fully responsive and optimized for all devices with mobile-first design." } },
+    { "@type": "Question", "name": "Do you provide SEO services?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, SEO optimization is integrated into every project including technical SEO, on-page optimization, and schema markup." } },
+    { "@type": "Question", "name": "Can I update the website myself?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we can integrate CMS solutions and provide training. Technical updates are available through support packages." } },
+    { "@type": "Question", "name": "Do you offer ongoing support?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide maintenance, security updates, performance monitoring, and content updates through monthly support packages." } }
+  ]
+}
+```
+Note: do **not** add self-serving Review/AggregateRating markup without a verified third-party review source.
+
+### H5. Put a stable keyword-bearing heading on the page
+The H1's keyword portion is a rotating animation; no H2 contains a target query. Add a static subtitle/H2 such as "B2B & B2C website design that converts" near the hero.
 
 ---
 
-## ⚪ LOW PRIORITY - Backlog (1-3 Months)
+## MEDIUM
 
-### 18. Launch Blog & Content Marketing
-**Impact:** Very High (long-term) | **Effort:** Ongoing | **Priority:** P3
+### M1. Expand on-page content (~380 → 800+ words)
+Surface what already exists in llms.txt:
+- Numbered 6-step process section (Discovery → Support).
+- Visible pricing section ($3,000–$15,000 range or named tiers) — also fixes the broken `#pricing` CTA in CtaFooter.
+- FAQ section matching the FAQPage schema.
+- Reconcile timeline claims: "10–14 days" (Stats) vs "2–4 weeks" (llms.txt) — pick one.
 
-**Action:**
-1. Create blog infrastructure (/blog route)
-2. Develop content calendar (2-4 posts/month)
-3. Write foundational articles:
-   - "10 Web Design Trends for [Year]"
-   - "How to Choose a Web Design Agency"
-   - "SEO Basics for New Websites"
-   - "Responsive Design Best Practices"
-   - "Website Performance Optimization Guide"
+### M2. Add trust & E-E-A-T elements
+- Replace unverifiable testimonials with real clients (name + company + link/logo) or a third-party review widget.
+- About/founder section: name, photo, LinkedIn.
+- Add a one-line source note to the stats or remove the duplicated Stats section.
+- Replace footer `href="#"` social placeholders with real profiles.
 
-**Target:** 15-20 articles in first 3 months
+### M3. Build external brand signals (GEO)
+1. Clutch.co profile (most-cited agency directory in ChatGPT/Perplexity answers).
+2. DesignRush listing + LinkedIn company page.
+3. Optional: one YouTube walkthrough video (strong correlation with AI citation).
 
----
-
-### 19. Location-Based SEO (If Applicable)
-**Impact:** High (for local search) | **Effort:** 4-6 hours | **Priority:** P3
-
-**Action:**
-- Create location-specific pages if serving specific cities
-- Optimize for "web design agency in [city]"
-- Claim and optimize Google Business Profile
-- Build local citations (directories)
+### M4. Sitemap/llms.txt hygiene
+- Automate `<lastmod>` to deploy date.
+- Consider folding llms.txt `## Keywords` into the About prose.
+- Optional: IndexNow key file for Bing/Yandex.
 
 ---
 
-### 20. Implement Advanced Schema
-**Impact:** Medium | **Effort:** 3-4 hours | **Priority:** P3
+## LOW
 
-**Action:**
-- Add Service schema for each offering
-- Add Review/Rating schema for testimonials
-- Add BreadcrumbList schema (when multi-page)
-- Add Organization logo schema
+- HSTS `includeSubDomains; preload` + hstspreload.org submission.
+- Self-host/trim fonts (Inter variable font replaces 7 weights); code-split vendor JS chunk.
+- `site.webmanifest` for PWA signals.
+- Re-run this audit with a Google API key (CrUX/PSI field data) and GSC access for indexation + query data.
 
 ---
 
-### 21. A/B Testing Program
-**Impact:** Medium | **Effort:** Ongoing | **Priority:** P3
+## Suggested order of work
 
-**Action:**
-- Implement testing framework (Google Optimize, VWO, or custom)
-- Test variations:
-  - CTA button text
-  - Form length (short vs long)
-  - Headline variations
-  - Pricing/package displays
-
----
-
-### 22. International/Multilingual (If Needed)
-**Impact:** Medium (if targeting multiple countries) | **Effort:** 16+ hours | **Priority:** P3
-
-**Action:**
-- Implement hreflang tags
-- Create translated versions
-- Target multiple markets
-
----
-
-## Quick Reference: Effort & Impact Matrix
-
-| Task | Impact | Effort | ROI | Priority |
-|------|--------|--------|-----|----------|
-| Create robots.txt | High | 5 min | ★★★★★ | P0 |
-| Implement schema | High | 2-3 hrs | ★★★★★ | P0 |
-| Add image alt text | High | 30 min | ★★★★★ | P0 |
-| Generate sitemap | High | 1 hr | ★★★★★ | P0 |
-| Fix social links | Med | 10 min | ★★★★ | P0 |
-| Optimize meta tags | High | 30 min | ★★★★★ | P1 |
-| Add canonical tags | Med | 1 hr | ★★★★ | P1 |
-| Expand content | V.High | 4-6 hrs | ★★★★★ | P1 |
-| Implement SSR | V.High | 8-16 hrs | ★★★★★ | P1 |
-| Create llms.txt | Med | 30 min | ★★★★ | P1 |
-| Optimize videos | High | 2-4 hrs | ★★★★★ | P1 |
-| Add pages | V.High | 16-24 hrs | ★★★★★ | P2 |
-| Create FAQ | Med | 3-4 hrs | ★★★★ | P2 |
-| E-E-A-T signals | High | 6-8 hrs | ★★★★★ | P2 |
-| Optimize images | Med | 3-4 hrs | ★★★ | P2 |
-| Security headers | Med | 1-2 hrs | ★★★ | P2 |
-| Lazy loading | Med | 2 hrs | ★★★★ | P2 |
-
----
-
-## Implementation Timeline
-
-### Week 1: Quick Wins (8-10 hours)
-- ✅ robots.txt (5 min)
-- ✅ Sitemap (1 hr)
-- ✅ Image alt text (30 min)
-- ✅ Social links (10 min)
-- ✅ Schema markup (2-3 hrs)
-- ✅ Meta optimization (30 min)
-- ✅ llms.txt (30 min)
-- ✅ Canonical tags (1 hr)
-
-**Expected Impact:** +15-20 points to SEO score
-
-### Week 2-3: Content & Performance (16-24 hours)
-- ✅ Expand homepage content (4-6 hrs)
-- ✅ Optimize videos (2-4 hrs)
-- ✅ Lazy loading (2 hrs)
-- ✅ Implement SSR/SSG (8-16 hrs)
-
-**Expected Impact:** +20-25 points to SEO score
-
-### Week 4-6: Depth & Authority (24-32 hours)
-- ✅ Add dedicated pages (16-24 hrs)
-- ✅ Create FAQ (3-4 hrs)
-- ✅ E-E-A-T signals (6-8 hrs)
-- ✅ Optimize images (3-4 hrs)
-- ✅ Security headers (1-2 hrs)
-
-**Expected Impact:** +15-20 points to SEO score
-
-### Month 2-3: Long-term Growth (Ongoing)
-- Launch blog
-- Build backlinks
-- Create case studies
-- A/B testing
-- Location SEO (if needed)
-
-**Expected Impact:** Sustained traffic growth, authority building
-
----
-
-## Success Metrics
-
-### Technical Metrics:
-- SEO Score: 68 → 85+ (target)
-- PageSpeed Score: [Current] → 90+ (target)
-- Core Web Vitals: All "Good" range
-- Schema errors: 0
-
-### Traffic Metrics (6-month projection):
-- Organic traffic: 100-200/mo → 1,000-2,000/mo
-- Indexed pages: 1 → 10+
-- Keyword rankings: 0 → 20-30 (first 3 pages)
-- Backlinks: [Current] → 50+
-
-### Conversion Metrics:
-- Form submissions: [Baseline] → +40%
-- Bounce rate: [Current] → <60%
-- Time on site: [Current] → +25%
-
----
-
-## Tools & Resources Needed
-
-### Free Tools:
-- Google Search Console
-- Google Analytics
-- PageSpeed Insights
-- Schema Markup Validator
-- Mobile-Friendly Test
-
-### Development:
-- react-helmet-async
-- react-snap or Next.js migration
-- Image optimization tools (Squoosh, ImageOptim)
-- Video compression (HandBrake, FFmpeg)
-
-### Optional Premium:
-- Ahrefs / SEMrush ($99-199/mo)
-- Screaming Frog Spider ($149/yr)
-- Surfer SEO ($59+/mo)
-
----
-
-## Questions & Support
-
-If you need clarification on any action item:
-1. Refer to FULL-AUDIT-REPORT.md for detailed explanations
-2. Test implementations in development first
-3. Monitor GSC for indexing issues after changes
-4. Track Core Web Vitals with Vercel SpeedInsights
-
-**Next Steps:**
-1. Review this action plan
-2. Start with Week 1 tasks (highest ROI)
-3. Test all changes in development
-4. Deploy and monitor in Google Search Console
-5. Schedule follow-up audit in 60 days
-
----
-
-**Last Updated:** May 13, 2026  
-**Next Review:** After completing High Priority items
+| Week | Items |
+|------|-------|
+| Now | C1 (deploy), H1, H3, H4 (one PR: meta tags + vercel.json + schema) |
+| Week 1 | C3 (privacy/terms), C4 (media), H2, H5 |
+| Weeks 2–4 | C2 (prerendering), M1, M2 |
+| Ongoing | M3 (Clutch/LinkedIn/YouTube), M4, Low items |

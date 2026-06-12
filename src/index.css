@@ -190,3 +190,43 @@
     text-wrap: pretty;
   }
 }
+
+/* Starry sky (ported from StarrySkyCSS): tiled star textures pulsing in and out */
+@keyframes star-pulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.star-plane {
+  position: absolute;
+  width: 150vmax;
+  height: 150vmax;
+  left: -50vmax;
+  top: -50vmax;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.star-tile {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background-repeat: repeat;
+  background-size: 512px 512px;
+  animation-name: star-pulse;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .star-tile {
+    animation: none !important;
+    opacity: 0.5;
+  }
+}

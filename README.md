@@ -1,6 +1,6 @@
-# Studio — Luxury Web Design Agency Landing Page
+# Studio — B2B & B2C Website Design Agency Landing Page
 
-A dark, premium, single-page landing for a web design agency.
+A dark, premium, single-page landing for a web design agency serving B2B and B2C clients.
 Stack: **React + Vite + Tailwind CSS + Framer Motion (motion/react) + hls.js + lucide-react + react-router-dom**.
 
 ## Prerequisites

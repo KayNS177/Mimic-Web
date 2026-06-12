@@ -3,14 +3,17 @@ const LINK_GROUPS = [
     title: 'Studio',
     links: [
       { label: 'Services', href: '#services' },
-      { label: 'Work', href: '#work' },
       { label: 'Process', href: '#process' },
+      { label: 'Solutions', href: '#solutions' },
+      { label: 'FAQ', href: '#faq' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'Contact', href: 'https://wa.me/60174018136' },
+      { label: 'Privacy', href: '/privacy.html' },
+      { label: 'Terms', href: '/terms.html' },
     ],
   },
 ];
@@ -31,7 +34,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="max-w-sm text-sm text-white/50 font-body font-light leading-relaxed">
-              Luxury web design. Stunning visuals, blazing performance.
+              B2B & B2C website design. Stunning visuals, blazing performance.
               Crafted with purpose. Defined by excellence. Optimized to convert.
             </p>
             <a
@@ -87,9 +90,14 @@ export default function Footer() {
           <span className="text-xs font-body text-white/40">
             © 2026 Mimic.Studio. All rights reserved.
           </span>
-          <span className="text-xs font-body text-white/40">
-            Crafted with purpose. Defined by excellence. Optimized to convert.
-          </span>
+          <nav className="flex items-center gap-5">
+            <a href="/privacy.html" className="text-xs font-body text-white/40 hover:text-white/80 transition-colors">
+              Privacy
+            </a>
+            <a href="/terms.html" className="text-xs font-body text-white/40 hover:text-white/80 transition-colors">
+              Terms
+            </a>
+          </nav>
         </div>
       </div>
     </footer>

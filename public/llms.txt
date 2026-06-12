@@ -1,0 +1,74 @@
+# Mimic.Studio - B2B & B2C Website Design Agency
+
+## About
+Mimic.Studio is a B2B and B2C website design agency specializing in high-converting, SEO-optimized websites. Whether you sell to businesses or directly to consumers, we combine expert design with cutting-edge performance optimization to deliver websites that rank higher, load faster, and convert more visitors into customers. Our approach focuses on custom responsive design, blazing performance, and conversion-focused results.
+
+## Services
+- B2B Website Design & Lead Generation
+- B2C Website Design & Conversion Optimization
+- Custom Web Design & Development
+- SEO Optimization & Google Rankings
+- Responsive Mobile-First Design
+- Conversion Rate Optimization
+- Performance Optimization & Speed
+- Analytics Integration & Tracking
+- Vercel Deployment & Hosting
+- Website Redesign & Improvement
+- Ongoing Maintenance & Support
+- Technical SEO Implementation
+
+## Technologies
+React, Tailwind CSS, Framer Motion, EmailJS, Vercel Analytics, Vercel Speed Insights, Next.js, React Helmet Async
+
+## Process
+1. Discovery Call - Understanding your vision and goals
+2. Design Phase - Creating stunning, brand-aligned designs
+3. Development - Building with modern, performant code
+4. Testing - Ensuring flawless cross-device experience
+5. Launch - Deploying with monitoring and analytics
+6. Support - Ongoing optimization and improvements
+
+## Key Features
+- Mobile-first responsive design across all devices
+- SEO optimization with schema markup and technical SEO
+- High-performance websites with excellent Core Web Vitals
+- Conversion-focused design and user experience
+- Analytics and performance tracking integration
+- Secure deployment with modern security headers
+- Fast loading speeds and optimized assets
+
+## Contact
+Website: https://mimicstudio.co
+WhatsApp: +60174018136
+Email: knsidik@gmail.com
+
+## Locations Served
+International clients worldwide
+
+## Keywords
+B2B website design, B2C website design, web design agency, custom website development, SEO web design, responsive design, high-converting websites, performance optimization, lead generation websites, mobile-first design, conversion rate optimization, React development, Tailwind CSS, modern web development
+
+## Pricing
+Every project is custom-quoted based on scope, features, and timeline. Free consultation calls available before any commitment.
+
+## Timeline
+Most projects launch within 10-14 days from kickoff. Larger scopes can take up to 4 weeks depending on features and content readiness.
+
+## FAQs
+Q: What do you need from me to get started?
+A: Just your goals and any brand assets you already have. We start with a free discovery call to understand your vision, then handle design, development, and launch end to end.
+
+Q: How long does a website take to build?
+A: Most projects launch within 10-14 days from kickoff. Larger scopes can take up to 4 weeks depending on features and content readiness.
+
+Q: Will my website be mobile-friendly?
+A: Yes, every website is fully responsive and optimized for all devices with mobile-first design.
+
+Q: Do you provide SEO services?
+A: Yes, SEO optimization is integrated into every project including technical SEO, on-page optimization, and schema markup.
+
+Q: Can I update the website myself?
+A: Yes, we can integrate CMS solutions and provide training. Technical updates available through support packages.
+
+Q: Do you offer ongoing support?
+A: Yes, we provide maintenance, security updates, performance monitoring, and content updates through monthly support packages.

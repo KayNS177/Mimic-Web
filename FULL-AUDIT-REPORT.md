@@ -1,766 +1,133 @@
 # Full SEO Audit Report: Mimic.Studio
 
-**URL:** https://mimicstudio.co/  
-**Business Type:** Web Design Agency (Professional Services)  
-**Audit Date:** May 13, 2026  
-**Overall SEO Health Score:** 68/100
+**URL:** https://mimicstudio.co/
+**Business Type:** Web Design Agency (B2B/B2C professional services, online — not local brick-and-mortar)
+**Audit Date:** June 12, 2026
+**Pages Crawled:** 1 of 1 (single-page React SPA, anchor navigation only)
+**Overall SEO Health Score:** 42/100
+
+> **Important context:** the live deploy is from May 29, 2026. The local repo contains uncommitted improvements (B2B & B2C repositioning of title/meta/schema/hero/footer, plus `public/llms.txt`) that are **not live yet**. Several findings below are fixed simply by deploying.
 
 ---
 
 ## Executive Summary
 
-### Overall Assessment
-Mimic.Studio presents a modern, visually-driven web design agency site built with React. The site demonstrates strong design aesthetics and performance monitoring (Vercel Analytics + SpeedInsights), but has significant SEO optimization opportunities, particularly in content depth, technical SEO implementation, and structured data.
+### Score Breakdown
+
+| Category | Weight | Score | Weighted |
+|----------|--------|-------|----------|
+| Technical SEO | 22% | 54 | 11.9 |
+| Content Quality | 23% | 38 | 8.7 |
+| On-Page SEO | 20% | 52 | 10.4 |
+| Schema / Structured Data | 10% | 38 | 3.8 |
+| Performance (CWV) | 10% | 30 | 3.0 |
+| AI Search Readiness | 10% | 31 | 3.1 |
+| Images / Media | 5% | 25 | 1.3 |
+| **Total** | | | **42/100** |
 
 ### Top 5 Critical Issues
-1. ❌ **No robots.txt file** - Missing crawl directives for search engines
-2. ❌ **No XML sitemap** - Search engines lack a complete site map
-3. ❌ **No structured data (Schema.org)** - Missing rich snippet opportunities
-4. ❌ **JavaScript rendering dependency** - Content not visible without JS execution
-5. ❌ **Thin content** - Limited text content may impact topical authority
+1. **Client-side rendering hides ~95% of content** — the served HTML body is an empty `<div id="root">`. AI crawlers (GPTBot, ClaudeBot, PerplexityBot) and many bots see zero page copy. Google renders JS but with delay and risk.
+2. **52 MB of media payload** — 33.5 MB hero video + 18.5 MB of animated GIFs, all served with `Cache-Control: max-age=0`. Estimated Lighthouse mobile score: 25–40.
+3. **Dead legal/CTA links** — `#privacy`, `#terms`, and `#pricing` anchors point to nothing. Privacy/Terms absence is a compliance and trust failure for a site collecting lead data.
+4. **No canonical tag + www redirect is 307 (temporary)** — signal consolidation to `https://mimicstudio.co/` is not enforced.
+5. **llms.txt returns 404 live** (exists locally, undeployed) and the live schema/title still say "Luxury web design" — conflicting entity signals vs. the new B2B/B2C positioning.
 
 ### Top 5 Quick Wins
-1. ✅ **Add robots.txt** - Allow search engine crawling with proper directives
-2. ✅ **Implement LocalBusiness schema** - Enhance local search visibility
-3. ✅ **Add image alt text** - Improve accessibility and image SEO
-4. ✅ **Create XML sitemap** - Help search engines discover all pages
-5. ✅ **Optimize meta description** - Current description could be more compelling
+1. **Deploy the pending local changes** — instantly fixes the title/meta/schema positioning and puts llms.txt live.
+2. **Add `vercel.json` with cache + security headers** — immutable caching for `/assets/` and `/frames/`, plus `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`.
+3. **Add canonical tag + Open Graph/Twitter Card tags + favicon** to `index.html` — small edits, immediate effect on indexing signals and social/WhatsApp link previews.
+4. **Convert the three feature GIFs to lazy-loaded `<video>`** — 18.5 MB → ~2 MB with no visual change.
+5. **Surface llms.txt content on-page** — process steps, pricing range, and FAQs already written; publishing them adds ~300 indexable words and fixes the broken `#pricing` CTA.
 
 ---
 
-## Detailed Findings
+## 1. Technical SEO (54/100)
 
-### 1. Technical SEO (Score: 55/100) - Weight: 22%
+### Critical
+- **No `<link rel="canonical">`** in either live or local `index.html`. Add `<link rel="canonical" href="https://mimicstudio.co/" />`.
+- **`www.mimicstudio.co` redirects with HTTP 307** (temporary). Configure a permanent (308) redirect in Vercel domain settings or `vercel.json`.
+- **Empty-body SPA**: all content requires JS execution. Recommended fix: prerender the React app at build time (e.g., `vite-plugin-prerender` or an SSG pass) so the served HTML contains the full rendered markup. *Note: do NOT serve `index.legacy.html` as a prerender shell — it is an outdated design with different (GBP) pricing and old positioning.*
 
-#### ✅ Strengths
-- **HTTPS**: Likely implemented (assuming Vercel deployment)
-- **Mobile viewport meta tag**: Properly configured
-- **Character encoding**: UTF-8 set correctly
-- **Performance monitoring**: Vercel Analytics & SpeedInsights integrated
-- **Color scheme**: Dark mode meta tag present
+### High
+- **No Open Graph or Twitter Card tags** — shares on WhatsApp/LinkedIn/X render blank. Add `og:title`, `og:description`, `og:image` (1200×630), `og:url`, `og:type`, `twitter:card`.
+- **No favicon** — `/favicon.ico` 404s; no `<link rel="icon">` tag. Google shows favicons in mobile SERPs.
+- **Missing security headers** — only HSTS is present. Add `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy` via `vercel.json`.
+- **Stale sitemap `lastmod`** (2026-05-13 vs. deploy of 2026-05-29). Automate updating it on each deploy.
 
-#### ❌ Issues
+### Medium / Low
+- IndexNow key file absent (optional Bing/Yandex instant indexing).
+- HSTS could add `includeSubDomains; preload` and be submitted to the preload list.
+- Soft-404 behavior: unknown paths return the SPA shell with 200 — configure a real 404 for non-existent routes if routes are ever added.
+- robots.txt is clean and correct; sitemap structure valid (1 URL is accurate for the site).
 
-**Critical:**
-- **Missing robots.txt** - No crawl directives for search engines
-  - *Impact:* Search engines have no guidance on what to crawl/index
-  - *Fix:* Create `/public/robots.txt`
+## 2. Content Quality & E-E-A-T (38/100)
 
-- **No XML sitemap** - Missing sitemap.xml
-  - *Impact:* Search engines may not discover all pages
-  - *Fix:* Generate and submit sitemap to GSC
+- **~380 indexable words** on the page — under the ~500-word homepage floor and far below the 1,000–2,000 words competing "web design agency" pages carry.
+- **Experience signals absent**: no portfolio, no case studies, no named verifiable clients. Testimonial companies ("Finlytic", "Wealth", "Orbit Labs") are unverifiable — no logos, links, or photos.
+- **Trust gaps**: Privacy/Terms links are dead anchors; contact is WhatsApp + Gmail only; no business entity, founder, or team named anywhere.
+- **Unsourced stats**: "98% satisfaction, 3.2x conversions, 10–14 days" appear twice (FeaturesGrid + Stats) with no methodology. Also inconsistent with llms.txt's "2–4 weeks" timeline.
+- **Keyword targeting weak**: "B2B website design" / "B2C website design" appear only in the hero badge and footer (after deploy); no stable H1/H2 contains them. The H1's rotating word is not a crawlable, stable heading.
+- **Copy leans on superlatives** ("wildly reimagined", "defined by excellence") rather than specifics — pattern-matched as low-value filler by quality raters.
+- **AI citation readiness: 22/100** — pricing/process/FAQ facts exist only in llms.txt, not in the rendered page.
 
-- **JavaScript rendering dependency** - SPA with no SSR/SSG
-  - *Impact:* Content not available until JS executes; may impact indexing
-  - *Fix:* Implement Server-Side Rendering (SSR) or Static Site Generation (SSG)
+**Top content additions by impact:** (1) 2–3 real case studies with metrics, (2) on-page numbered process section, (3) visible pricing section (fixes `#pricing`), (4) real Privacy/Terms pages, (5) About/founder section with a name, photo, and LinkedIn.
 
-**High:**
-- **No canonical tags** - Missing canonical URL declarations
-  - *Impact:* Risk of duplicate content issues
-  - *Fix:* Add canonical tags to `<head>`
+## 3. On-Page SEO (52/100)
 
-- **Missing security headers** - No CSP, X-Frame-Options visible
-  - *Impact:* Security vulnerabilities; may affect rankings
-  - *Fix:* Configure security headers in Vercel config
+- Title and meta description are well-formed; the pending B2B/B2C versions are stronger — deploy them.
+- H1 exists but its keyword-bearing portion rotates via JS animation; H2s ("The difference is everything", etc.) carry zero query terms. Add one stable, keyword-bearing subtitle or H2.
+- Internal linking N/A (single page); however three anchor CTAs (`#pricing`, `#privacy`, `#terms`) are broken — both a UX and crawl-quality issue.
+- `lang="en"` and viewport set correctly. No meta robots tag (defaults to index,follow — fine; adding `max-image-preview:large` is a free snippet enhancement).
 
-**Medium:**
-- **No hreflang tags** - No international targeting
-  - *Impact:* Limited if single market, but restricts global expansion
-  - *Fix:* Add if targeting multiple countries/languages
+## 4. Schema / Structured Data (38/100)
 
----
+- **Type misuse**: `ProfessionalService` is a `LocalBusiness` subtype that Google ties to physical premises; the address block has only `addressCountry: MY` (ineligible for LocalBusiness rich results and weak for entity resolution). Recommended: switch to `Organization` (optionally typed `["Organization","ProfessionalService"]`).
+- **`priceRange: "$$"` is misleading** — use the literal `"$3,000 – $15,000"`.
+- **Missing**: `email`, `logo`/`image`, `sameAs`, `@id` linkage between Organization and WebSite blocks; `areaServed` says Malaysia only while llms.txt says worldwide.
+- **FAQPage schema** recommended (no Google rich result for commercial sites since Aug 2023, but valuable for AI citation) — Q&As already exist in llms.txt.
+- Do **not** add self-serving Review/AggregateRating markup — spam-policy violation without a third-party source.
+- Ready-to-paste replacement JSON-LD blocks are in `ACTION-PLAN.md`.
 
-### 2. Content Quality (Score: 62/100) - Weight: 23%
+## 5. Performance / Core Web Vitals (30/100, estimated)
 
-#### ✅ Strengths
-- **Clear value proposition**: "The Website Your Brand Deserves"
-- **Concise messaging**: Brief, scannable copy
-- **Professional tone**: Luxury positioning evident
-- **Call-to-action clarity**: Multiple CTAs throughout
+PSI API was rate-limited during this audit (no key); estimates derive from measured asset weights and timing. TTFB is excellent (111 ms, Vercel edge).
 
-#### ❌ Issues
+| Asset | Size | Problem |
+|-------|------|---------|
+| Hero video (`/frames/Grasslands0001-0320.mp4`) | 33.5 MB | LCP element; no poster, no preload, `max-age=0` |
+| feature-1.gif | 9.4 MB | GIF format, eager-loaded, uncached |
+| feature-2.gif | 7.2 MB | GIF format, eager-loaded, uncached |
+| Feature_3.gif | 1.9 MB | GIF format, eager-loaded, uncached |
+| index JS bundle | 877 KB (275 KB gz) | monolithic, no code-splitting, uncached |
+| Google Fonts | 3 families / 13 weights | render-blocking |
 
-**High:**
-- **Thin content** - Limited text content on homepage
-  - *Impact:* Reduced topical authority and keyword targeting opportunities
-  - *Fix:* Add 800-1200 words of valuable content
-  - *Suggestions:*
-    - Expand service descriptions
-    - Add case studies/portfolio section
-    - Create "About Us" content
-    - Add testimonials with detailed stories
-    - Include process breakdown with details
+**Priority order:** (1) re-encode hero video to ≤5 MB 720p + poster image with `fetchpriority="high"`, (2) convert GIFs to lazy `<video>` (≈90% savings), (3) `vercel.json` immutable cache headers, (4) trim/self-host fonts (Inter variable font replaces 7 weights), (5) code-split vendor chunk.
 
-- **Missing E-E-A-T signals** - Limited expertise demonstration
-  - *Impact:* Lower trust signals for Google
-  - *Fix:* Add:
-    - Team credentials/experience
-    - Client testimonials with attribution
-    - Case studies with results
-    - Industry certifications/awards
+## 6. AI Search Readiness / GEO (31/100)
 
-**Medium:**
-- **No blog/resources section** - No content marketing hub
-  - *Impact:* Limited organic traffic opportunities
-  - *Fix:* Add blog with web design, SEO, and conversion optimization content
+- robots.txt allows all AI crawlers (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot) — correct posture for a brand that needs visibility.
+- **Dominant problem: client-side rendering.** AI crawlers don't execute JS; they currently see only the title, meta description, and JSON-LD (~400 words machine-readable vs. what humans see). Passage-level citability is effectively zero until the site is prerendered.
+- **llms.txt is good but undeployed** (404 live). Before deploying: it's solid structurally; consider folding the `## Keywords` section into prose (reads as SEO filler to an LLM). Pricing in llms.txt ($3,000–$15,000) must stay consistent with any on-page pricing you publish.
+- **No external brand signals**: no Clutch/DesignRush profiles, footer social links are `href="#"` placeholders, no LinkedIn company page, no named founder/author anywhere (weak entity disambiguation).
+- Platform notes: Google AI Overviews needs server-rendered HTML + consistent entity data (fix areaServed conflict); Perplexity is most likely to cite llms.txt once live; ChatGPT search needs either rendered HTML or third-party sources (Clutch profile).
 
-- **Limited keyword targeting** - Focuses on brand, not search terms
-  - *Impact:* May miss ranking opportunities
-  - *Fix:* Incorporate natural keywords:
-    - "web design agency"
-    - "custom website development"
-    - "SEO web design"
-    - "responsive web design services"
+## 7. Images / Media (25/100)
+
+- `FeaturesChess` images have descriptive alt text (good); hero video correctly `aria-hidden` as decorative.
+- 18.5 MB of GIFs is the bulk of the penalty (see Performance). Convert to video/AVIF, lazy-load below-the-fold media.
+- No `og:image` exists — also needed for social previews (see Technical).
+
+## 8. Search Experience (SXO) — inline assessment
+
+For "b2b website design" / "web design agency" queries, SERPs reward agency service pages with portfolios, case studies, transparent pricing, and long-form proof. The page *type* (agency landing page) matches intent, but the page loses on depth and proof: a buyer persona evaluating a $3k–$15k purchase finds no work samples, no humans, and no prices. Expect high pogo-sticking until case studies and pricing are on-page.
 
 ---
 
-### 3. On-Page SEO (Score: 70/100) - Weight: 20%
+## Audit Limitations
 
-#### ✅ Strengths
-- **Title tag**: Present and brand-focused
-- **Meta description**: Exists and includes key terms
-- **H1 tag**: Clear, singular H1 on homepage
-- **Heading hierarchy**: H2 tags used for sections
-- **Internal linking**: Good navigation structure
-- **URL structure**: Clean, semantic URLs (assumed from React Router)
+- PageSpeed Insights API quota was exhausted; CWV figures are lab estimates from asset analysis, not CrUX field data. Re-run with a Google API key for field data.
+- No Google Search Console / GA4 / Moz / Bing / DataForSEO credentials configured — indexation status, query data, and backlink profile were not auditable.
+- Screenshot/mobile-render checks skipped (Playwright not configured in this environment).
+- SXO and clustering were assessed inline (no live SERP data available).
 
-#### ❌ Issues
-
-**High:**
-- **Meta description optimization** - Could be more compelling
-  - *Current:* "Luxury, AI-powered web design agency. Stunning design. Blazing performance. Built by AI, refined by experts."
-  - *Issues:*
-    - Mentions "AI-powered" but site doesn't emphasize AI
-    - No call-to-action
-    - Could include more keywords
-  - *Suggested:* "Expert web design agency creating high-converting, SEO-optimized websites. Custom responsive design, blazing performance, and results-driven. Get a free quote today."
-
-- **Title tag optimization** - Brand-first, not keyword-focused
-  - *Current:* "Mimic.Studio — The Website Your Brand Deserves"
-  - *Impact:* May miss search traffic
-  - *Suggested:* "Mimic.Studio | Custom Web Design Agency | SEO-Optimized Websites"
-
-**Medium:**
-- **Missing H3-H6 tags** - Limited heading depth
-  - *Impact:* Reduced content structure and keyword opportunities
-  - *Fix:* Add sub-headings in features sections
-
-- **Image filenames** - Non-descriptive (feature-1.gif, feature-2.gif)
-  - *Impact:* Lost image SEO opportunity
-  - *Fix:* Rename to descriptive names (e.g., responsive-web-design-example.gif)
-
----
-
-### 4. Schema & Structured Data (Score: 0/100) - Weight: 10%
-
-#### ❌ Critical Issues
-
-**No structured data implemented** - Zero schema markup present
-
-*Impact:* Missing all rich snippet opportunities:
-- No business information in search results
-- No review stars potential
-- No breadcrumb navigation
-- No service listings
-- No logo/organization markup
-
-**Required Schema Types:**
-
-1. **Organization Schema** (Critical)
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Mimic.Studio",
-  "description": "Luxury web design agency creating high-converting websites",
-  "url": "https://mimicstudio.co",
-  "telephone": "+60174018136",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "MY"
-  },
-  "sameAs": [
-    "https://instagram.com/mimicstudio",
-    "https://dribbble.com/mimicstudio"
-  ]
-}
-```
-
-2. **WebSite Schema** (High)
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Mimic.Studio",
-  "url": "https://mimicstudio.co",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://mimicstudio.co/search?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-```
-
-3. **Service Schema** (Medium)
-- Add for each service offered (web design, SEO, responsive design)
-
-4. **BreadcrumbList Schema** (Low - single page)
-
----
-
-### 5. Performance & Core Web Vitals (Score: 85/100) - Weight: 10%
-
-#### ✅ Strengths
-- **Monitoring in place**: Vercel SpeedInsights + Analytics
-- **Modern framework**: React with optimizations
-- **Font optimization**: Preconnect to Google Fonts
-- **Loading screen**: Provides smooth UX during initial load
-
-#### ⚠️ Areas for Improvement
-
-**Medium:**
-- **Video files** - Multiple video backgrounds may impact LCP
-  - *Files identified:*
-    - `/frames/Grasslands0001-0320.mp4` (Hero)
-    - `/frames/Web_BG10001-0240.mp4` (Process section)
-  - *Impact:* Large file sizes may delay Largest Contentful Paint
-  - *Fix:*
-    - Compress videos further
-    - Use WebM format with MP4 fallback
-    - Implement lazy loading for below-fold videos
-    - Consider poster images with play-on-scroll
-
-- **GIF files** - Large animated GIFs in features
-  - *Files:* feature-1.gif, feature-2.gif, Feature_3.gif
-  - *Fix:* Convert to optimized videos or WebP animations
-
-- **JavaScript bundle size** - React + Motion + EmailJS + dependencies
-  - *Impact:* May impact TTI (Time to Interactive)
-  - *Fix:*
-    - Implement code splitting
-    - Lazy load EmailJS until form interaction
-    - Tree-shake unused code
-
-**Lab Data Estimates (requires actual testing):**
-- **LCP:** ~2.5-3.5s (needs improvement due to video)
-- **INP:** ~100-200ms (estimated good - needs field data)
-- **CLS:** ~0-0.1 (likely good - fixed dimensions)
-
-**Recommendations:**
-1. Test with PageSpeed Insights for real metrics
-2. Implement lazy loading for all videos
-3. Use `loading="lazy"` for images below fold
-4. Consider removing loading screen or reducing duration (currently 2.17s minimum)
-
----
-
-### 6. Images & Media (Score: 40/100) - Weight: 5%
-
-#### ❌ Critical Issues
-
-**Missing alt text on all images** - Accessibility and SEO issue
-- *Impact:*
-  - Screen readers cannot describe images
-  - Search engines cannot understand image content
-  - Lost image search traffic
-  
-*Images without alt text:*
-```jsx
-// FeaturesChess.jsx - Line 100+
-<img src={feature1} /> // ❌ No alt
-<img src={feature2} /> // ❌ No alt
-<img src={feature3} /> // ❌ No alt
-```
-
-**Required fixes:**
-```jsx
-<img 
-  src={feature1} 
-  alt="Responsive web design mockup showing mobile and desktop layouts optimized for SEO and conversion"
-  loading="lazy"
-/>
-<img 
-  src={feature2} 
-  alt="Vercel analytics dashboard tracking website performance and user behavior metrics"
-  loading="lazy"
-/>
-<img 
-  src={feature3} 
-  alt="Mobile responsive website design displaying seamlessly across smartphone, tablet, and desktop devices"
-  loading="lazy"
-/>
-```
-
-**Medium Issues:**
-- **Non-descriptive filenames**: feature-1.gif, feature-2.gif
-  - *Fix:* Rename to seo-optimized-web-design.gif, conversion-tracking-analytics.gif, etc.
-
-- **Missing lazy loading**: No `loading="lazy"` attribute
-  - *Impact:* All images load immediately, impacting performance
-  - *Fix:* Add to all below-fold images
-
-- **No WebP format**: Using GIF/JPG instead of modern formats
-  - *Impact:* Larger file sizes
-  - *Fix:* Convert to WebP with fallbacks
-
----
-
-### 7. AI Search Readiness (Score: 55/100) - Weight: 10%
-
-#### Current State Analysis
-
-**Citability Score: 50/100**
-
-**✅ Strengths:**
-- Clear brand identity
-- Professional tone
-- Structured sections
-- Contact information present
-
-**❌ Issues:**
-
-1. **Missing llms.txt** - No AI crawler guidance
-   - *Impact:* AI search engines lack structured info
-   - *Fix:* Create `/public/llms.txt` with:
-```
-# Mimic.Studio - Web Design Agency
-
-## About
-Luxury web design agency specializing in high-converting, SEO-optimized websites. Expert team delivering custom responsive web design, blazing performance, and conversion optimization.
-
-## Services
-- Custom Web Design & Development
-- SEO Optimization
-- Responsive Mobile Design
-- Conversion Rate Optimization
-- Performance Optimization
-- Analytics Integration
-
-## Contact
-Website: https://mimicstudio.co
-WhatsApp: +60174018136
-```
-
-2. **Limited factual claims** - Few concrete, citable statements
-   - *Impact:* AI may struggle to cite/reference the site
-   - *Fix:* Add specific, factual content:
-     - Number of projects completed
-     - Years in business
-     - Specific technologies used
-     - Team credentials
-     - Measurable results/case studies
-
-3. **No FAQ section** - Missing question-answer pairs
-   - *Impact:* Lost opportunity for voice search and AI answers
-   - *Fix:* Add FAQ with schema:
-     - "How much does web design cost?"
-     - "How long does it take to build a website?"
-     - "What is included in your web design service?"
-
-4. **Thin authority signals** - Limited expertise demonstration
-   - *Fix:* Add:
-     - Blog with expert content
-     - Case studies with detailed results
-     - Team bios with credentials
-     - Client testimonials with attribution
-
-**AI Crawler Accessibility:**
-- ✅ No aggressive blocking expected
-- ❌ JavaScript rendering required (may limit some crawlers)
-- ❌ No explicit AI crawler permissions in robots.txt
-
----
-
-### 8. Navigation & Internal Linking (Score: 75/100)
-
-#### ✅ Strengths
-- **Clear navigation menu**: Home, Process, Services
-- **Multiple CTAs**: Strategic placement of "Get Quote" buttons
-- **Anchor links**: Smooth scrolling to sections
-- **Footer navigation**: Organized link groups
-- **Mobile menu**: Responsive navigation
-
-#### ⚠️ Areas for Improvement
-
-**Medium:**
-- **Limited depth** - Single-page site limits linking opportunities
-  - *Impact:* Cannot build topical authority through internal linking
-  - *Recommendation:* Add dedicated pages:
-    - /services
-    - /portfolio or /work
-    - /about
-    - /blog
-    - /contact
-
-- **No breadcrumbs** - Not needed for single page, but will be for multi-page
-  - *Future fix:* Add breadcrumb schema when pages are added
-
-- **Social links incomplete** - Instagram/Dribbble link to placeholders (#instagram, #dribbble)
-  - *Impact:* Broken user experience, lost social signals
-  - *Fix:* Update with actual social profile URLs
-
----
-
-### 9. Local SEO (Score: 45/100)
-
-**Business Type:** Local service business (web design agency)
-
-#### ✅ Strengths
-- **WhatsApp contact**: +60174018136 (Malaysia)
-- **Contact form**: Functional quote request system
-
-#### ❌ Issues
-
-**Critical:**
-- **No Google Business Profile mention** - Cannot verify if claimed
-  - *Impact:* Missing local search visibility
-  - *Action Required:* Verify GBP exists and is optimized
-
-- **No NAP consistency** - Name, Address, Phone incomplete
-  - *Missing:* Physical address (if applicable)
-  - *Impact:* Reduced local search rankings
-  - *Fix:* Add full address to footer if service location-based
-
-**High:**
-- **No LocalBusiness schema** - Missing structured data
-  - *Impact:* Not appearing in local rich results
-  - *Fix:* Implement schema (see Section 4)
-
-- **No location keywords** - No city/region targeting
-  - *Impact:* Won't rank for "web design agency in [city]"
-  - *Fix:* Add location-based content if targeting specific area
-
-**Medium:**
-- **No location page** - No dedicated service area pages
-  - *Recommendation:* Create location pages if serving specific cities
-
----
-
-### 10. Mobile & Responsive Design (Score: 95/100)
-
-#### ✅ Strengths (Excellent Implementation)
-- **Fully responsive**: All components adapt to mobile
-- **Mobile-first**: Tailwind CSS breakpoints properly used
-- **Touch-friendly**: Large tap targets on buttons
-- **Mobile menu**: Smooth hamburger menu animation
-- **Viewport meta tag**: Properly configured
-- **Readable fonts**: Good font sizes with responsive scaling
-- **Form optimization**: Mobile-friendly form fields
-
-#### Minor Improvements:
-- **Video performance on mobile** - Large video files may impact mobile LCP
-  - *Fix:* Serve smaller video files for mobile viewports
-
----
-
-### 11. Forms & Conversion Optimization (Score: 85/100)
-
-#### ✅ Strengths
-- **Functional contact form**: EmailJS integration
-- **Clear labels**: Good UX for form fields
-- **Validation**: Required fields enforced
-- **Success state**: Confirmation message after submission
-- **Alternative contact**: WhatsApp button as backup
-- **Privacy note**: "Your info stays with us" builds trust
-
-#### ⚠️ Areas for Improvement
-
-**Medium:**
-- **No form schema** - Missing ContactPoint schema
-  - *Fix:* Add to Organization schema
-
-- **No A/B testing evident** - Cannot verify optimization efforts
-  - *Recommendation:* Test different form lengths, CTAs
-
-- **Missing field suggestions** - No autocomplete attributes
-  - *Fix:* Add autocomplete for name, email fields
-
----
-
-## Category Scores Breakdown
-
-| Category | Score | Weight | Weighted Score |
-|----------|-------|--------|----------------|
-| Technical SEO | 55/100 | 22% | 12.1 |
-| Content Quality | 62/100 | 23% | 14.3 |
-| On-Page SEO | 70/100 | 20% | 14.0 |
-| Schema / Structured Data | 0/100 | 10% | 0.0 |
-| Performance (CWV) | 85/100 | 10% | 8.5 |
-| AI Search Readiness | 55/100 | 10% | 5.5 |
-| Images | 40/100 | 5% | 2.0 |
-| **Total** | | **100%** | **56.4/100** |
-
-**Note:** Additional considerations (Navigation: 75, Mobile: 95, Forms: 85, Local: 45) factor into category scores above.
-
-**Adjusted Overall Score: 68/100** (factoring in strengths in mobile/forms balancing weaknesses)
-
----
-
-## Priority Action Plan
-
-### 🔴 Critical (Fix Immediately - Week 1)
-
-1. **Create robots.txt**
-   - Location: `/public/robots.txt`
-   - Content:
-```
-User-agent: *
-Allow: /
-
-Sitemap: https://mimicstudio.co/sitemap.xml
-```
-
-2. **Implement core Schema.org markup**
-   - Add Organization schema to index.html
-   - Add WebSite schema
-   - Add LocalBusiness schema (if applicable)
-
-3. **Add image alt text to all images**
-   - Fix in FeaturesChess.jsx
-   - Use descriptive, keyword-rich alt text
-
-4. **Generate and submit XML sitemap**
-   - Use sitemap generator or create manually
-   - Submit to Google Search Console
-
-5. **Fix social media links**
-   - Update Instagram/Dribbble placeholders with real URLs
-   - Or remove if accounts don't exist yet
-
----
-
-### 🟠 High Priority (Fix Within 1-2 Weeks)
-
-6. **Optimize meta tags**
-   - Rewrite title tag to include keywords
-   - Enhance meta description with CTA
-
-7. **Add canonical tags**
-   - Implement in React Helmet or index.html
-
-8. **Expand homepage content**
-   - Add 500-800 more words of valuable content
-   - Include service details, process breakdown
-   - Add 2-3 client testimonials with details
-
-9. **Implement SSR or SSG**
-   - Consider Next.js migration for better SEO
-   - Or use React Snap for static HTML generation
-
-10. **Create llms.txt file**
-    - Add to /public folder
-    - Include structured business information
-
-11. **Optimize video files**
-    - Compress videos
-    - Add WebM versions
-    - Implement lazy loading
-
----
-
-### 🟡 Medium Priority (Fix Within 1 Month)
-
-12. **Add dedicated pages**
-    - Services page with detailed offerings
-    - Portfolio/Work page with case studies
-    - About page with team/expertise
-    - Blog page for content marketing
-
-13. **Create FAQ section**
-    - Add 8-10 common questions
-    - Implement FAQ schema
-    - Target voice search queries
-
-14. **Implement E-E-A-T signals**
-    - Add team bios with credentials
-    - Create detailed case studies
-    - Add industry certifications
-
-15. **Optimize images**
-    - Rename files to descriptive names
-    - Convert GIFs to optimized videos
-    - Implement WebP format
-
-16. **Add security headers**
-    - Configure in vercel.json
-    - Add CSP, X-Frame-Options, etc.
-
-17. **Implement lazy loading**
-    - Add to all images and videos
-    - Defer below-fold content
-
----
-
-### ⚪ Low Priority (Backlog)
-
-18. **Create blog content**
-    - Develop content calendar
-    - Write 10-15 foundational articles
-    - Target key industry keywords
-
-19. **Add location targeting** (if applicable)
-    - Create location-specific pages
-    - Optimize for local keywords
-    - Claim and optimize GBP
-
-20. **Implement advanced schema**
-    - Service schema for each offering
-    - Review schema for testimonials
-    - BreadcrumbList for multi-page
-
-21. **A/B testing program**
-    - Test form variations
-    - Test CTA copy
-    - Test layout options
-
-22. **International expansion** (if needed)
-    - Add hreflang tags
-    - Translate for target markets
-
----
-
-## Technical SEO Checklist
-
-### Immediate Actions Needed:
-- [ ] Create /public/robots.txt
-- [ ] Generate XML sitemap
-- [ ] Add Organization schema
-- [ ] Add WebSite schema
-- [ ] Implement canonical tags
-- [ ] Add image alt text (all images)
-- [ ] Fix social media links
-- [ ] Create /public/llms.txt
-- [ ] Optimize meta title
-- [ ] Enhance meta description
-
-### Testing Required:
-- [ ] Run PageSpeed Insights test
-- [ ] Test mobile usability in GSC
-- [ ] Validate schema with Google Rich Results Test
-- [ ] Check robots.txt with GSC tester
-- [ ] Validate sitemap in GSC
-- [ ] Test core web vitals with real data
-
-### Monitoring Setup:
-- [ ] Set up Google Search Console
-- [ ] Set up Google Analytics (if not already)
-- [ ] Configure Bing Webmaster Tools
-- [ ] Monitor Core Web Vitals (already have Vercel SpeedInsights ✓)
-- [ ] Set up rank tracking for target keywords
-- [ ] Monitor backlink profile
-
----
-
-## Keyword Opportunities
-
-### Primary Keywords (High Priority):
-- web design agency
-- custom web design
-- responsive web design
-- SEO web design
-- website design services
-- professional web design
-
-### Secondary Keywords:
-- web design company
-- website development agency
-- mobile responsive design
-- conversion optimized websites
-- luxury web design
-- high performance websites
-
-### Long-tail Keywords:
-- web design agency for small business
-- SEO optimized website design
-- custom responsive website development
-- professional web design services [city]
-- web design agency with SEO
-- fast loading website design
-
-### Current Keyword Coverage:
-- ✅ "web design" - mentioned
-- ✅ "website" - mentioned
-- ❌ "agency" - not prominent
-- ❌ "responsive" - not in meta
-- ❌ "SEO" - only in meta description
-- ❌ Location terms - missing
-
----
-
-## Competitor Benchmarking Recommendations
-
-To improve competitive positioning:
-
-1. **Analyze top 3 competitors** ranking for target keywords
-2. **Compare:**
-   - Content depth (word count)
-   - Structured data implementation
-   - Page structure
-   - Backlink profiles
-   - Keyword targeting
-
-3. **Identify gaps:**
-   - What content do they have that you don't?
-   - What keywords are they ranking for?
-   - What schema types are they using?
-
----
-
-## Next Steps
-
-### Week 1:
-1. Fix critical technical issues (robots.txt, schema, alt text)
-2. Set up Google Search Console
-3. Submit sitemap
-4. Optimize meta tags
-
-### Week 2-4:
-1. Expand content
-2. Add dedicated pages
-3. Implement SSR/SSG
-4. Optimize media files
-
-### Month 2:
-1. Launch blog
-2. Create case studies
-3. Build backlinks
-4. Monitor and iterate
-
----
-
-## Tools Recommended
-
-### Essential:
-- Google Search Console (free)
-- Google Analytics (free)
-- Google PageSpeed Insights (free)
-- Schema Markup Validator (free)
-
-### Premium (Optional):
-- Ahrefs or SEMrush (keyword research, competitor analysis)
-- Screaming Frog (technical audits)
-- Surfer SEO (content optimization)
-
----
-
-## Conclusion
-
-Mimic.Studio has a solid foundation with excellent design and performance monitoring. The primary SEO opportunities lie in:
-
-1. **Technical infrastructure** (robots.txt, sitemap, schema)
-2. **Content depth** (expanding beyond minimal copy)
-3. **Structured data** (implementing schema for rich results)
-4. **Image optimization** (alt text, formats, lazy loading)
-
-With focused effort on the Critical and High priority items, the site can achieve a score of 80+ within 4-6 weeks.
-
-**Estimated Traffic Potential:**
-- Current: ~100-200 monthly organic visitors
-- After optimizations: ~1,000-2,000 monthly organic visitors (6-month projection)
-- With blog + consistent content: ~5,000+ monthly organic visitors (12-month projection)
-
----
-
-**Report Generated:** May 13, 2026  
-**Audited By:** Claude (SEO Audit Skill)  
-**Next Audit Recommended:** 60 days after implementing Critical + High priority fixes
+*Specialist sub-audits: technical (agent afc9693d), content (ad5a4406), schema (a1efdffb), performance (af9f9185), GEO (aff569e8).*

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar.jsx';
@@ -7,6 +6,8 @@ import Hero from './components/Hero.jsx';
 import StartSection from './components/StartSection.jsx';
 import FeaturesChess from './components/FeaturesChess.jsx';
 import FeaturesGrid from './components/FeaturesGrid.jsx';
+import Solutions from './components/Solutions.jsx';
+import Faq from './components/Faq.jsx';
 import GetQuote from './components/GetQuote.jsx';
 import Footer from './components/Footer.jsx';
 import SmoothScroll from './components/SmoothScroll.jsx';
@@ -43,9 +44,6 @@ export default function App() {
 
   return (
     <>
-      <Helmet>
-        <link rel="canonical" href="https://mimicstudio.co/" />
-      </Helmet>
       <LoadingScreen show={loading} />
       <Analytics />
       <SpeedInsights />
@@ -58,6 +56,8 @@ export default function App() {
             <StartSection />
             <FeaturesChess />
             <FeaturesGrid />
+            <Solutions />
+            <Faq />
             <GetQuote />
             <Footer />
           </div>

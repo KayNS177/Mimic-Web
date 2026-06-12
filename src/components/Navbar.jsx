@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 
-const LINKS = ['Home', 'Process', 'Services'];
+const LINKS = ['Home', 'Process', 'Services', 'Solutions', 'FAQ'];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);

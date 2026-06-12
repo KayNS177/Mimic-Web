@@ -54,7 +54,7 @@ export default function GetQuote() {
   return (
     <section
       id="quote"
-      className="relative w-full h-full px-6 py-12 md:py-16 flex items-center"
+      className="relative w-full h-full px-6 py-16 md:py-20 flex items-center"
     >
       <div className="mx-auto max-w-7xl w-full">
         <div className="text-center flex flex-col items-center">

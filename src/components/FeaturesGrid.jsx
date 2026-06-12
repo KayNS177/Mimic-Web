@@ -1,6 +1,9 @@
 import { BarChart3, Palette, Shield, Zap } from 'lucide-react';
 import { motion } from 'motion/react';
 import BlurText from './BlurText.jsx';
+import VideoBackdrop from './VideoBackdrop.jsx';
+
+const VIDEO_SRC = '/frames/Web_BG10001-0240.mp4';
 
 const CARDS = [
   {
@@ -35,9 +38,10 @@ export default function FeaturesGrid() {
   return (
     <section
       id="why-us"
-      className="relative w-full h-full px-6 py-16 md:py-20 flex items-center"
+      className="relative w-full h-full overflow-hidden px-6 pt-24 md:pt-32 pb-16 md:pb-20 mt-24 md:mt-32 flex items-center"
     >
-      <div className="mx-auto max-w-6xl w-full">
+      <VideoBackdrop src={VIDEO_SRC} fadeHeight={200} />
+      <div className="relative z-10 mx-auto max-w-6xl w-full">
         <div className="text-center flex flex-col items-center">
           <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
             Why Us
