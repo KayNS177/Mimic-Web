@@ -31,7 +31,7 @@ const CARDS = [
 const STATS = [
   { value: '98%', label: 'Client satisfaction' },
   { value: '3.2x', label: 'More conversions' },
-  { value: '10–14 days', label: 'Average delivery' },
+  { value: '1 week', label: 'Average delivery' },
 ];
 
 export default function FeaturesGrid() {

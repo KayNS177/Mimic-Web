@@ -37,6 +37,11 @@ React, Tailwind CSS, Framer Motion, EmailJS, Vercel Analytics, Vercel Speed Insi
 - Secure deployment with modern security headers
 - Fast loading speeds and optimized assets
 
+## Why Your Business Needs a Website
+1. Proven Increase - Businesses with a website experience a 70% increase in customer engagement and a 60% boost in sales compared to those without one. It opens more avenues for potential customers to find you, learn more, and reach out, making it a no-brainer investment that pays for itself many times over.
+2. Backend - A website is more than an online brochure. Built-in tools like automated invoicing and payments, real-time reporting on your performance, and online booking and enquiry handling automate manual tasks and keep everything in one place, freeing up time for growth.
+3. Credibility - By letting customers learn about your business, see your work, and read real testimonials, your website shows you are a legitimate and established business, making it easy for them to feel confident choosing you.
+
 ## Contact
 Website: https://mimicstudio.co
 WhatsApp: +60174018136
@@ -52,14 +57,14 @@ B2B website design, B2C website design, web design agency, custom website develo
 Every project is custom-quoted based on scope, features, and timeline. Free consultation calls available before any commitment.
 
 ## Timeline
-Most projects launch within 10-14 days from kickoff. Larger scopes can take up to 4 weeks depending on features and content readiness.
+Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.
 
 ## FAQs
 Q: What do you need from me to get started?
 A: Just your goals and any brand assets you already have. We start with a free discovery call to understand your vision, then handle design, development, and launch end to end.
 
 Q: How long does a website take to build?
-A: Most projects launch within 10-14 days from kickoff. Larger scopes can take up to 4 weeks depending on features and content readiness.
+A: Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.
 
 Q: Will my website be mobile-friendly?
 A: Yes, every website is fully responsive and optimized for all devices with mobile-first design.

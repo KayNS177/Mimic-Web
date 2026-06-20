@@ -8,7 +8,7 @@ const FAQS = [
   },
   {
     q: 'How long does a website take to build?',
-    a: 'Most projects launch within 10–14 days from kickoff. Larger scopes can take up to 4 weeks depending on features and content readiness.',
+    a: 'Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.',
   },
   {
     q: 'Will my website be mobile-friendly?',

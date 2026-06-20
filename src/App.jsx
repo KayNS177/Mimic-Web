@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import Navbar from './components/Navbar.jsx';
 import Hero from './components/Hero.jsx';
 import StartSection from './components/StartSection.jsx';
+import WhyWebsite from './components/WhyWebsite.jsx';
 import FeaturesChess from './components/FeaturesChess.jsx';
 import FeaturesGrid from './components/FeaturesGrid.jsx';
 import Solutions from './components/Solutions.jsx';
@@ -54,6 +55,7 @@ export default function App() {
           <Hero />
           <div className="bg-black">
             <StartSection />
+            <WhyWebsite />
             <FeaturesChess />
             <FeaturesGrid />
             <Solutions />
