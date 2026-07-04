@@ -7,8 +7,8 @@ const FAQS = [
     a: 'Just your goals and any brand assets you already have. We start with a free discovery call to understand your vision, then handle design, development, and launch end to end.',
   },
   {
-    q: 'How long does a website take to build?',
-    a: 'Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.',
+    q: 'Do you build custom software, or just websites?',
+    a: 'Both. We build custom websites and tailored software or tools — booking systems, dashboards, internal tools — designed around how your business actually works.',
   },
   {
     q: 'Will my website be mobile-friendly?',

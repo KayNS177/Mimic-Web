@@ -9,8 +9,8 @@ const ROWS = [
   {
     id: 'convert',
     reverse: false,
-    title: 'Built to perform. Designed to convert.',
-    body: 'Every pixel is intentional. Our team combines expert web design with Google SEO optimization. Crafting sites that rank higher, perform faster, and convert more visitors.',
+    title: 'Built for you. Designed to convert.',
+    body: 'Every pixel is intentional. We combine expert web design and custom software with Google SEO — crafting sites and tools that fit your business, rank higher, and convert more visitors.',
     cta: 'Learn more',
     gif: feature1,
     alt: 'Responsive web design mockup showing SEO-optimized mobile and desktop layouts designed for high conversion rates',

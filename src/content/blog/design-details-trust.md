@@ -3,7 +3,7 @@ title: "Web Design That Builds Trust: 8 Details That Win Customers"
 slug: design-details-trust
 excerpt: Professional web design builds trust in milliseconds. Discover the small design details that make B2B and B2C websites look credible and convert more visitors.
 category: Design
-author: Mimic.Studio
+author: mimic-editorial
 date: 2026-05-05
 readTime: 6 min read
 coverImage:
@@ -32,9 +32,9 @@ Cramped layouts feel anxious, like they're trying to sell everything at once. Ge
 
 Give your headline room. Let sections breathe. The restraint reads as premium.
 
-## 3. Fast load times build instant trust
+## 3. Custom-built, not templated
 
-A slow website feels broken before it feels anything else. Speed is a trust signal *and* a ranking signal, which is why we treat [Core Web Vitals](/blog/core-web-vitals-2026) as a design requirement, not an afterthought.
+A website that's visibly a generic template quietly signals that your business is generic too. Design and details built around *your* brand — not pulled off a shelf — say the opposite: that you care about the work, and that you're the real thing.
 
 ## 4. Mobile-first, responsive design
 

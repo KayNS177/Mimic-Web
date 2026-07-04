@@ -3,7 +3,7 @@ title: How to Design a High-Converting Homepage (2026 Guide)
 slug: homepage-conversion
 excerpt: A step-by-step guide to high-converting homepage design. Learn the conversion-focused web design framework we use to turn visitors into customers.
 category: Conversion
-author: Mimic.Studio
+author: mimic-editorial
 date: 2026-06-24
 readTime: 7 min read
 coverImage:
@@ -63,6 +63,6 @@ Design opinions are cheap. Behaviour is truth. Before you redesign anything, ins
 // 3. Where does the cursor hesitate?
 ```
 
-Site speed shapes all of this — a slow homepage kills conversions and rankings alike, so pair your redesign with our [Core Web Vitals guide](/blog/core-web-vitals-2026).
+And the best homepages don't just inform — they often *do* something, like booking or quoting on the spot. See [when your website should work like software](/blog/website-that-works-like-software).
 
 A homepage's job isn't to impress. It's to move the right person one step closer to working with you — then get out of the way. If yours isn't pulling its weight, [get a free website review and quote](/#quote) and we'll show you exactly where it's losing customers.

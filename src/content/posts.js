@@ -8,6 +8,8 @@
  * coverImage, draft.
  */
 
+import { resolveAuthor } from './authors.js';
+
 const modules = import.meta.glob('./blog/*.md', {
   query: '?raw',
   import: 'default',
@@ -33,7 +35,7 @@ function parse(raw) {
     slug: meta.slug || '',
     excerpt: meta.excerpt || '',
     category: meta.category || 'General',
-    author: meta.author || 'Mimic.Studio',
+    author: resolveAuthor(meta.author),
     date: meta.date || '',
     readTime: meta.readTime || '',
     coverImage: meta.coverImage || '',

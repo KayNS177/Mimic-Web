@@ -3,7 +3,7 @@ title: "B2B vs B2C Web Design: Key Differences That Drive Conversions"
 slug: b2b-vs-b2c-web-design
 excerpt: B2B vs B2C web design compared — how buyer psychology reshapes your hero, proof, and CTAs. A practical guide from a conversion-focused web design agency.
 category: Strategy
-author: Mimic.Studio
+author: mimic-editorial
 date: 2026-06-10
 readTime: 8 min read
 coverImage:
@@ -45,7 +45,7 @@ It's tempting to think B2B can be duller because the audience is "professional."
 
 Both audiences demand the fundamentals of good web design:
 
-1. A page that loads fast and feels effortless — good [Core Web Vitals](/blog/core-web-vitals-2026) matter for everyone.
+1. A page that feels effortless and is built around how customers actually buy.
 2. A clear, jargon-free promise.
 3. Responsive, mobile-first design that isn't an afterthought.
 4. Obvious, trustworthy next steps.

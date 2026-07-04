@@ -79,6 +79,24 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split heavy vendors into long-cached chunks separate from app code.
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined;
+          // hls.js is dynamically imported — keep it in its own chunk so it is
+          // never pulled into the eagerly-loaded vendor bundle.
+          if (id.includes('hls.js')) return 'hls';
+          if (id.includes('react-router') || id.includes('react-helmet')) return 'router';
+          if (id.includes('motion') || id.includes('framer')) return 'motion';
+          if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('/scheduler/'))
+            return 'react';
+          return 'vendor';
+        },
+      },
+    },
+  },
   server: {
     port: 5173,
     host: true,

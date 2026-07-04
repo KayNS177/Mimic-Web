@@ -1,7 +1,7 @@
-# Mimic.Studio - B2B & B2C Website Design Agency
+# Mimic.Studio - B2B & B2C Websites & Custom Software
 
 ## About
-Mimic.Studio is a B2B and B2C website design agency specializing in high-converting, SEO-optimized websites. Whether you sell to businesses or directly to consumers, we combine expert design with cutting-edge performance optimization to deliver websites that rank higher, load faster, and convert more visitors into customers. Our approach focuses on custom responsive design, blazing performance, and conversion-focused results.
+Mimic.Studio is a B2B and B2C studio building custom websites and software tailored to each business. Whether you sell to businesses or directly to consumers, we design high-converting websites and build the custom software and tools you need — booking systems, dashboards, integrations — around how you actually work. We handle everything end to end, from design and development to launch and ongoing support, so your life is easier.
 
 ## Services
 - B2B Website Design & Lead Generation
@@ -10,7 +10,7 @@ Mimic.Studio is a B2B and B2C website design agency specializing in high-convert
 - SEO Optimization & Google Rankings
 - Responsive Mobile-First Design
 - Conversion Rate Optimization
-- Performance Optimization & Speed
+- Custom Software, Web Apps & Tailored Tools
 - Analytics Integration & Tracking
 - Vercel Deployment & Hosting
 - Website Redesign & Improvement
@@ -18,12 +18,12 @@ Mimic.Studio is a B2B and B2C website design agency specializing in high-convert
 - Technical SEO Implementation
 
 ## Technologies
-React, Tailwind CSS, Framer Motion, EmailJS, Vercel Analytics, Vercel Speed Insights, Next.js, React Helmet Async
+Vite, React, Tailwind CSS, Motion (Framer Motion), EmailJS, Vercel Analytics, Vercel Speed Insights, React Helmet Async
 
 ## Process
 1. Discovery Call - Understanding your vision and goals
 2. Design Phase - Creating stunning, brand-aligned designs
-3. Development - Building with modern, performant code
+3. Development - Building with modern, reliable code
 4. Testing - Ensuring flawless cross-device experience
 5. Launch - Deploying with monitoring and analytics
 6. Support - Ongoing optimization and improvements
@@ -31,16 +31,27 @@ React, Tailwind CSS, Framer Motion, EmailJS, Vercel Analytics, Vercel Speed Insi
 ## Key Features
 - Mobile-first responsive design across all devices
 - SEO optimization with schema markup and technical SEO
-- High-performance websites with excellent Core Web Vitals
+- Custom software and tools tailored to your workflow
 - Conversion-focused design and user experience
-- Analytics and performance tracking integration
+- Analytics and tracking integration
 - Secure deployment with modern security headers
-- Fast loading speeds and optimized assets
+- Everything handled end to end, with ongoing support
 
 ## Why Your Business Needs a Website
-1. Proven Increase - Businesses with a website experience a 70% increase in customer engagement and a 60% boost in sales compared to those without one. It opens more avenues for potential customers to find you, learn more, and reach out, making it a no-brainer investment that pays for itself many times over.
+1. Proven Increase - A professional website consistently drives more customer engagement and sales by opening more avenues for potential customers to find you, learn more, and reach out. It is a high-return investment that pays for itself many times over.
 2. Backend - A website is more than an online brochure. Built-in tools like automated invoicing and payments, real-time reporting on your performance, and online booking and enquiry handling automate manual tasks and keep everything in one place, freeing up time for growth.
 3. Credibility - By letting customers learn about your business, see your work, and read real testimonials, your website shows you are a legitimate and established business, making it easy for them to feel confident choosing you.
+
+## About
+Learn more about the studio, our approach, and the team: https://mimicstudio.co/about
+
+## Blog
+Tips on web design, custom software, conversion, and SEO for B2B and B2C businesses. Authored by Marcus Tan, Lead Web Designer at Mimic.Studio.
+- How to Design a High-Converting Homepage (2026 Guide): https://mimicstudio.co/blog/homepage-conversion
+- B2B vs B2C Web Design: Key Differences That Drive Conversions: https://mimicstudio.co/blog/b2b-vs-b2c-web-design
+- Custom Software vs Off-the-Shelf: What Actually Fits Your Business: https://mimicstudio.co/blog/custom-software-vs-off-the-shelf
+- When Your Website Should Work Like Software: https://mimicstudio.co/blog/website-that-works-like-software
+- Web Design That Builds Trust: 8 Details That Win Customers: https://mimicstudio.co/blog/design-details-trust
 
 ## Contact
 Website: https://mimicstudio.co
@@ -51,20 +62,20 @@ Email: knsidik@gmail.com
 International clients worldwide
 
 ## Keywords
-B2B website design, B2C website design, web design agency, custom website development, SEO web design, responsive design, high-converting websites, performance optimization, lead generation websites, mobile-first design, conversion rate optimization, React development, Tailwind CSS, modern web development
+B2B website design, B2C website design, custom software development, custom web applications, tailored software, web design agency, custom website development, SEO web design, responsive design, high-converting websites, digital solutions, lead generation websites, mobile-first design, conversion rate optimization, React development, modern web development
 
 ## Pricing
 Every project is custom-quoted based on scope, features, and timeline. Free consultation calls available before any commitment.
 
 ## Timeline
-Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.
+Every project is scoped to your goals with a clear timeline and quote before work starts. We then handle design, build, and launch end to end, plus ongoing support. Timelines depend on scope, features, and content readiness.
 
 ## FAQs
 Q: What do you need from me to get started?
 A: Just your goals and any brand assets you already have. We start with a free discovery call to understand your vision, then handle design, development, and launch end to end.
 
-Q: How long does a website take to build?
-A: Most projects launch within about a week from kickoff. Larger scopes can take longer depending on features and content readiness.
+Q: Do you build custom software, or just websites?
+A: Both. We build custom websites and tailored software or tools — booking systems, dashboards, internal tools — designed around how your business actually works.
 
 Q: Will my website be mobile-friendly?
 A: Yes, every website is fully responsive and optimized for all devices with mobile-first design.

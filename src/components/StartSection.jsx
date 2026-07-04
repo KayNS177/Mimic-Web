@@ -118,8 +118,9 @@ export default function StartSection() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-5 max-w-xl text-white/60 font-body font-light text-sm md:text-base"
           >
-            Share your vision. Our web design and development team manages everything,
-            from design, code, to launch. Professional websites delivered in days, not months.
+            Share your vision. Our web design and software team manages everything,
+            from design and code to launch — custom-built around your business, so
+            your life is easier.
           </motion.p>
 
           <motion.div

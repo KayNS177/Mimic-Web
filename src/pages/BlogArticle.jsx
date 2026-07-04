@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { motion, useReducedMotion, useScroll } from 'motion/react';
 import { ArrowLeft, ArrowUpRight, Link2, Check } from 'lucide-react';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import SmoothScroll from '../components/SmoothScroll.jsx';
+import Seo from '../components/Seo.jsx';
 import PostCard from '../components/blog/PostCard.jsx';
 import Cover from '../components/blog/Cover.jsx';
 import { getPostBySlug, getRelatedPosts, formatDate } from '../content/posts.js';
+import { articleMeta } from '../lib/seo-meta.js';
 import { renderMarkdown, extractHeadings } from '../lib/markdown.jsx';
 
 const SITE = 'https://mimicstudio.co';
@@ -104,34 +105,9 @@ export default function BlogArticle() {
         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
       };
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.date,
-    author: { '@type': 'Organization', name: post.author },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Mimic.Studio',
-      logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` },
-    },
-    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-  };
-
   return (
     <>
-      <Helmet>
-        <title>{`${post.title} | Mimic.Studio`}</title>
-        <meta name="description" content={post.excerpt} />
-        <link rel="canonical" href={url} />
-        <meta name="color-scheme" content="dark light" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:url" content={url} />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+      <Seo meta={articleMeta(post)} />
 
       <SmoothScroll />
       <Navbar theme="light" />
@@ -162,7 +138,7 @@ export default function BlogArticle() {
                 {post.title}
               </h1>
               <div className="mt-7 flex flex-wrap items-center justify-center gap-2 text-sm font-body text-ink-muted">
-                <span className="text-ink-strong">{post.author}</span>
+                <span className="text-ink-strong">{post.author.name}</span>
                 <span aria-hidden="true" className="inline-block h-1 w-1 rounded-full bg-brandblue" />
                 <time dateTime={post.date}>{formatDate(post.date)}</time>
                 {post.readTime ? (
@@ -219,11 +195,13 @@ export default function BlogArticle() {
                   <div className="flex-1">
                     <p className="eyebrow-ink">Written by</p>
                     <p className="mt-1 font-brand text-lg font-semibold text-ink-strong">
-                      {post.author}
+                      {post.author.name}
                     </p>
+                    {post.author.role ? (
+                      <p className="font-body text-xs text-ink-muted">{post.author.role}</p>
+                    ) : null}
                     <p className="mt-1 font-body text-sm text-ink-muted">
-                      A B2B & B2C web design studio building fast, conversion-focused
-                      websites and digital solutions.
+                      {post.author.bio}
                     </p>
                   </div>
                 </div>

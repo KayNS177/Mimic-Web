@@ -12,16 +12,16 @@ const AUDIENCES = [
   {
     icon: ShoppingBag,
     title: 'B2C Website Design',
-    body: 'Websites built for instant decisions. Fast, mobile-first experiences that hold attention, build brand trust, and convert visitors into customers on the spot.',
-    points: ['Conversion-focused journeys', 'Mobile-first performance', 'Brand-driven visual design'],
+    body: 'Websites built for instant decisions. Mobile-first experiences that hold attention, build brand trust, and convert visitors into customers on the spot.',
+    points: ['Conversion-focused journeys', 'Mobile-first experience', 'Brand-driven visual design'],
   },
 ];
 
 const INCLUDED = [
   'Custom design tailored to your brand — no templates',
+  'Custom software and integrations built around how you work',
   'SEO optimization with technical SEO and schema markup',
-  'Blazing performance with excellent Core Web Vitals',
-  'Analytics, tracking, hosting setup, and launch support',
+  'Analytics, hosting, launch, and ongoing support handled for you',
 ];
 
 export default function Solutions() {

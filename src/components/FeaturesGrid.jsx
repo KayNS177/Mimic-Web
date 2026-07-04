@@ -1,4 +1,4 @@
-import { BarChart3, Palette, Shield, Zap } from 'lucide-react';
+import { BarChart3, Blocks, Palette, Shield } from 'lucide-react';
 import { motion } from 'motion/react';
 import BlurText from './BlurText.jsx';
 import VideoBackdrop from './VideoBackdrop.jsx';
@@ -7,9 +7,9 @@ const VIDEO_SRC = '/frames/Web_BG10001-0240.mp4';
 
 const CARDS = [
   {
-    icon: Zap,
-    title: 'Days, Not Months',
-    body: "Concept to launch at a pace that redefines fast. Because waiting isn't a strategy.",
+    icon: Blocks,
+    title: 'Tailored to You',
+    body: 'Custom websites and software built around your business and how you work — never a generic template.',
   },
   {
     icon: Palette,
@@ -31,7 +31,7 @@ const CARDS = [
 const STATS = [
   { value: '98%', label: 'Client satisfaction' },
   { value: '3.2x', label: 'More conversions' },
-  { value: '1 week', label: 'Average delivery' },
+  { value: 'Zero', label: 'Technical hassle' },
 ];
 
 export default function FeaturesGrid() {

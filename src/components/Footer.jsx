@@ -11,6 +11,8 @@ const LINK_GROUPS = [
   {
     title: 'Company',
     links: [
+      { label: 'About', href: '/about' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Contact', href: 'https://wa.me/60174018136' },
       { label: 'Privacy', href: '/privacy.html' },
       { label: 'Terms', href: '/terms.html' },
@@ -52,8 +54,8 @@ export default function Footer({ theme = 'dark' }) {
               </span>
             </a>
             <p className={`max-w-sm text-sm font-body font-light leading-relaxed ${c.blurb}`}>
-              B2B & B2C website design. Stunning visuals, blazing performance.
-              Crafted with purpose. Defined by excellence. Optimized to convert.
+              B2B & B2C websites and custom software. Tailored to your business,
+              built to convert, and fully managed — so your life is easier.
             </p>
             <a
               href="/#quote"

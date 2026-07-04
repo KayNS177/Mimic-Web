@@ -64,6 +64,12 @@ export default function Navbar({ theme = 'dark' }) {
               Blog
             </a>
             <a
+              href="/about"
+              className={`px-3 py-2 text-sm font-medium font-body transition-colors ${c.link}`}
+            >
+              About
+            </a>
+            <a
               href="/#quote"
               className={`ml-1 inline-flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm font-medium transition-transform duration-300 ease-out hover:scale-[1.03] ${c.cta}`}
             >
@@ -161,6 +167,20 @@ export default function Navbar({ theme = 'dark' }) {
                   className={`block px-3 py-3 text-sm font-body ${c.mobileLink}`}
                 >
                   Blog
+                </a>
+              </motion.li>
+              <motion.li
+                variants={{
+                  hidden: { opacity: 0, y: -6, transition: { duration: 0.15, ease: 'easeIn' } },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.25, ease: 'easeOut' } },
+                }}
+              >
+                <a
+                  href="/about"
+                  onClick={() => setOpen(false)}
+                  className={`block px-3 py-3 text-sm font-body ${c.mobileLink}`}
+                >
+                  About
                 </a>
               </motion.li>
               <motion.li

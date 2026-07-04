@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { motion, useReducedMotion } from 'motion/react';
 import Navbar from '../components/Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import SmoothScroll from '../components/SmoothScroll.jsx';
+import Seo from '../components/Seo.jsx';
 import PostCard from '../components/blog/PostCard.jsx';
 import { getAllPosts, getAllCategories } from '../content/posts.js';
+import { blogIndexMeta } from '../lib/seo-meta.js';
 
 const ALL = 'All';
 
@@ -30,22 +31,7 @@ export default function BlogIndex() {
 
   return (
     <>
-      <Helmet>
-        <title>Web Design Blog | Mimic.Studio — Conversion, SEO & Performance</title>
-        <meta
-          name="description"
-          content="Web design tips for B2B and B2C brands: high-converting homepages, Core Web Vitals, SEO-optimized websites, and fast, professional design from Mimic.Studio."
-        />
-        <link rel="canonical" href="https://mimicstudio.co/blog" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Web Design Blog | Mimic.Studio" />
-        <meta
-          property="og:description"
-          content="Practical web design tips on conversion, SEO, Core Web Vitals, and building high-converting B2B and B2C websites."
-        />
-        <meta property="og:url" content="https://mimicstudio.co/blog" />
-        <meta name="color-scheme" content="dark light" />
-      </Helmet>
+      <Seo meta={blogIndexMeta(posts)} />
 
       <SmoothScroll />
       <Navbar theme="light" />
@@ -62,8 +48,8 @@ export default function BlogIndex() {
               <span className="font-heading italic">building the web</span>
             </h1>
             <p className="mx-auto mt-5 max-w-xl font-body font-light text-ink-muted text-base md:text-lg leading-relaxed">
-              Practical thinking on conversion, performance, and design — for B2B
-              and B2C brands that want a website that works.
+              Practical thinking on custom websites, software, conversion, and SEO
+              — for B2B and B2C brands that want digital that works.
             </p>
           </motion.div>
         </section>

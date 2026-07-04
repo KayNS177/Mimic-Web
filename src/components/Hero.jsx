@@ -56,7 +56,7 @@ export default function Hero() {
             className="liquid-glass rounded-full px-4 py-1 flex items-center gap-2"
           >
             <span className="text-xs md:text-sm text-white/90 font-body">
-              B2B & B2C Web Design that Converts.
+              B2B & B2C Websites & Custom Software.
             </span>
           </motion.div>
 
@@ -95,8 +95,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
             className="mt-6 max-w-lg text-center text-base md:text-lg text-white font-body font-light leading-tight"
           >
-            Whether you sell to businesses or consumers, we design websites and
-            digital solutions that solve real problems and drive measurable growth.
+            Whether you sell to businesses or consumers, we build custom websites
+            and software — tailored to how you work — and handle everything, so
+            your life is easier.
           </motion.p>
 
           <motion.div
