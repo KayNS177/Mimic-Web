@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="Conversion funnel diagram">
+  <rect width="1200" height="560" fill="#fbfaf6"/>
+  <g fill="none" stroke="#e4e1d8" stroke-width="1">
+    <line x1="80" y1="140" x2="1120" y2="140"/>
+    <line x1="80" y1="280" x2="1120" y2="280"/>
+    <line x1="80" y1="420" x2="1120" y2="420"/>
+  </g>
+  <g font-family="Inter, sans-serif" font-weight="600" fill="#17160f" font-size="26" text-anchor="start" dominant-baseline="central">
+    <text x="80" y="70">Visitors</text>
+    <text x="80" y="210">Engaged</text>
+    <text x="80" y="350">Leads</text>
+    <text x="80" y="490">Customers</text>
+  </g>
+  <g>
+    <rect x="360" y="48" width="760" height="44" rx="22" fill="#2c43e8" opacity="0.16"/>
+    <rect x="360" y="188" width="560" height="44" rx="22" fill="#2c43e8" opacity="0.28"/>
+    <rect x="360" y="328" width="360" height="44" rx="22" fill="#2c43e8" opacity="0.55"/>
+    <rect x="360" y="468" width="200" height="44" rx="22" fill="#2c43e8"/>
+  </g>
+</svg>

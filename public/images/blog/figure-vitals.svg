@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" role="img" aria-label="Core Web Vitals thresholds">
+  <rect width="1200" height="560" fill="#fbfaf6"/>
+  <g font-family="Inter, sans-serif" font-weight="700" fill="#17160f" font-size="30">
+    <text x="80" y="90">LCP</text>
+    <text x="80" y="250">INP</text>
+    <text x="80" y="410">CLS</text>
+  </g>
+  <g font-family="Barlow, sans-serif" fill="#6e6b60" font-size="20">
+    <text x="80" y="120">Largest Contentful Paint</text>
+    <text x="80" y="280">Interaction to Next Paint</text>
+    <text x="80" y="440">Cumulative Layout Shift</text>
+  </g>
+  <g>
+    <rect x="440" y="66" width="680" height="34" rx="17" fill="#e4e1d8"/>
+    <rect x="440" y="66" width="470" height="34" rx="17" fill="#2c43e8"/>
+    <rect x="440" y="226" width="680" height="34" rx="17" fill="#e4e1d8"/>
+    <rect x="440" y="226" width="360" height="34" rx="17" fill="#2c43e8"/>
+    <rect x="440" y="386" width="680" height="34" rx="17" fill="#e4e1d8"/>
+    <rect x="440" y="386" width="560" height="34" rx="17" fill="#2c43e8"/>
+  </g>
+  <g font-family="Barlow, sans-serif" fill="#17160f" font-size="18" text-anchor="end">
+    <text x="1120" y="52">Target &#8804; 2.0s</text>
+    <text x="1120" y="212">Good &lt; 200ms</text>
+    <text x="1120" y="372">Good &lt; 0.1</text>
+  </g>
+</svg>

@@ -46,6 +46,20 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        paper: {
+          DEFAULT: 'var(--surface-paper)',
+          raised: 'var(--surface-paper-raised)',
+          border: 'var(--paper-border)',
+        },
+        ink: {
+          strong: 'var(--ink-strong)',
+          body: 'var(--ink-body)',
+          muted: 'var(--ink-muted)',
+        },
+        brandblue: {
+          DEFAULT: 'var(--accent-blue)',
+          soft: 'var(--accent-blue-soft)',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',

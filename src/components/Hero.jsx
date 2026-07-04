@@ -93,10 +93,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.6, delay: 0.8, ease: 'easeOut' }}
-            className="mt-6 max-w-md text-center text-sm md:text-base text-white font-body font-light leading-tight"
+            className="mt-6 max-w-lg text-center text-base md:text-lg text-white font-body font-light leading-tight"
           >
-            Stunning web design for B2B and B2C brands. Blazing fast performance.
-            Built by experts, every pixel refined. This is modern web design, wildly reimagined.
+            Whether you sell to businesses or consumers, we design websites and
+            digital solutions that solve real problems and drive measurable growth.
           </motion.p>
 
           <motion.div

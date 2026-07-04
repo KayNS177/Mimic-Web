@@ -25,6 +25,20 @@
     --glass-border: rgba(255, 255, 255, 0.25);
     --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
     --glass-blur: 16px;
+
+    /* Soft-white content surfaces (blog) */
+    --surface-paper: #f5f3ee; /* main content background — warm, not stark #FFF */
+    --surface-paper-raised: #fbfaf6; /* cards on the paper surface */
+    --paper-border: #e4e1d8; /* hairline dividers on light */
+
+    /* Ink (text on the soft-white surface) */
+    --ink-strong: #17160f; /* headings */
+    --ink-body: #35332b; /* body copy */
+    --ink-muted: #6e6b60; /* metadata, captions */
+
+    /* Accent (electric brand blue, used sparingly on light) */
+    --accent-blue: #2c43e8;
+    --accent-blue-soft: rgba(44, 67, 232, 0.1); /* tag / hover fills on light */
   }
 
   html,
@@ -157,6 +171,138 @@
 
   .btn-white {
     @apply inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-body font-medium text-black transition-transform duration-300 ease-out hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  /* ---- Blog: soft-white content surfaces ---- */
+
+  /* Short, deliberate fade from the dark chrome into the paper sheet */
+  .paper-seam {
+    height: 72px;
+    background: linear-gradient(to bottom, #000 0%, var(--surface-paper) 100%);
+  }
+
+  .tag-pill {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-body font-medium tracking-wide;
+    color: var(--accent-blue);
+    background: var(--accent-blue-soft);
+  }
+
+  .eyebrow-ink {
+    @apply text-xs font-body uppercase tracking-[0.22em];
+    color: var(--ink-muted);
+  }
+
+  /* Article body typography — rendered markdown lives inside .article-prose */
+  .article-prose {
+    color: var(--ink-body);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem; /* ~18px */
+    line-height: 1.7;
+  }
+  .article-prose > * + * {
+    margin-top: 1.4em;
+  }
+  .article-prose h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--ink-strong);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-top: 2.2em;
+  }
+  .article-prose h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--ink-strong);
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-top: 1.8em;
+  }
+  .article-prose a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .article-prose a:hover {
+    border-bottom-color: var(--accent-blue);
+  }
+  .article-prose strong {
+    color: var(--ink-strong);
+    font-weight: 600;
+  }
+  .article-prose em {
+    font-style: italic;
+  }
+  .article-prose blockquote {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--ink-strong);
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--accent-blue);
+  }
+  .article-prose ul,
+  .article-prose ol {
+    padding-left: 1.5rem;
+  }
+  .article-prose ul {
+    list-style: disc;
+  }
+  .article-prose ol {
+    list-style: decimal;
+  }
+  .article-prose li + li {
+    margin-top: 0.5em;
+  }
+  .article-prose li::marker {
+    color: var(--ink-muted);
+  }
+  .article-prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    background: rgba(23, 22, 15, 0.06);
+    padding: 0.15em 0.4em;
+    border-radius: 6px;
+    color: var(--ink-strong);
+  }
+  .article-prose pre {
+    background: #1b1a14;
+    color: #ece9df;
+    padding: 1.1rem 1.25rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .article-prose pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+  }
+  .article-prose figure {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .article-prose img {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--paper-border);
+  }
+  .article-prose figcaption {
+    margin-top: 0.6rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-muted);
+  }
+  .article-prose hr {
+    border: none;
+    border-top: 1px solid var(--paper-border);
+    margin-top: 2.2em;
   }
 
   .video-fade-top {
