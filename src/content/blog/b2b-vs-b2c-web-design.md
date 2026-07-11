@@ -24,7 +24,7 @@ A B2C shopper often decides in a single session, driven by desire and momentum. 
 - **B2C web design** rewards *speed to desire*: strong imagery, social proof, and a frictionless path to purchase.
 - **B2B web design** rewards *speed to confidence*: clear positioning, credible proof, and content that helps a champion sell you internally.
 
-One design optimises for an individual acting now. The other optimises for a group deciding later. Everything else — UX, content depth, and calls to action — follows from that single difference.
+One design optimizes for an individual acting now. The other optimizes for a group deciding later. Everything else — UX, content depth, and calls to action — follows from that single difference.
 
 ## The person on the page isn't always the person paying
 
@@ -44,13 +44,13 @@ Design accordingly. That means the page needs things a consumer site would never
 
 For B2C, the hero sells a feeling — the product in its best light with a clear price and an add-to-cart. For B2B, the hero sells clarity: *who you help*, *what outcome you deliver*, and a low-commitment next step like "Book a demo." Either way, a [high-converting hero](/blog/homepage-conversion) states the outcome first.
 
-The sharpest difference is what you withhold. B2C hides nothing — price, product, delivery, all immediately visible, because friction is the enemy. B2B is usually explaining something the visitor doesn't yet have a mental category for, so the hero's job is to make them recognise their own problem in your words before you say anything about your solution.
+The sharpest difference is what you withhold. B2C hides nothing — price, product, delivery, all immediately visible, because friction is the enemy. B2B is usually explaining something the visitor doesn't yet have a mental category for, so the hero's job is to make them recognize their own problem in your words before you say anything about your solution.
 
 ### The proof
 
 B2C proof is emotional and voluminous: star ratings, review counts, user photos. Quantity matters, because a consumer is asking "do people like me buy this, and were they happy?"
 
-B2B proof is specific and authoritative: named case studies, measurable results, and logos your buyer recognises. Quantity matters far less than *relevance* — one detailed case study from a company that looks like theirs beats two hundred anonymous five-star ratings, because the B2B buyer is asking a different question: "has this worked for someone with my exact problem, at my size, in my industry?"
+B2B proof is specific and authoritative: named case studies, measurable results, and logos your buyer recognizes. Quantity matters far less than *relevance* — one detailed case study from a company that looks like theirs beats two hundred anonymous five-star ratings, because the B2B buyer is asking a different question: "has this worked for someone with my exact problem, at my size, in my industry?"
 
 ### The call to action
 
@@ -70,7 +70,7 @@ This is why B2B sites carry documentation, comparison pages, and long-form conte
 
 B2C shows the price. Always. A consumer who can't find a price assumes the worst and leaves.
 
-B2B is the genuinely hard call. "Contact us for pricing" protects your negotiating position and filters out tyre-kickers — but it also loses every buyer who was quietly building a shortlist and needed a number to include you. The middle path usually wins: publish a starting point, a range, or the *shape* of your pricing ("projects typically start from X, scoped to your requirements"). Give them enough to defend you internally without committing you to a figure.
+B2B is the genuinely hard call. "Contact us for pricing" protects your negotiating position and filters out tire-kickers — but it also loses every buyer who was quietly building a shortlist and needed a number to include you. The middle path usually wins: publish a starting point, a range, or the *shape* of your pricing ("projects typically start from X, scoped to your requirements"). Give them enough to defend you internally without committing you to a figure.
 
 ## What B2B and B2C web design share
 
@@ -82,7 +82,7 @@ Both audiences demand the fundamentals of good web design:
 2. A clear, jargon-free promise.
 3. Responsive, mobile-first design that isn't an afterthought.
 4. Obvious, trustworthy next steps.
-5. Clean, SEO-optimised structure so the right people can find you — get this wrong and [you simply won't show up on Google](/blog/website-not-showing-on-google), whoever you sell to.
+5. Clean, SEO-optimized structure so the right people can find you — get this wrong and [you simply won't show up on Google](/blog/website-not-showing-on-google), whoever you sell to.
 6. Speed. A [slow site](/blog/website-speed-core-web-vitals) loses a consumer's impulse and a business buyer's patience equally.
 
 And both are judged on credibility within milliseconds of arriving, long before anyone reads a word — which is why the [small design details that build trust](/blog/design-details-trust) matter identically on both sides.
@@ -97,7 +97,7 @@ Google settles the argument anyway: it uses [mobile-first indexing](https://deve
 
 ## Which one does your business need?
 
-Most growing companies actually need both — a lead-generating B2B site *and* conversion-focused B2C pages — built on one consistent brand system. That's exactly the kind of [B2B and B2C website design](/#services) we specialise in.
+Most growing companies actually need both — a lead-generating B2B site *and* conversion-focused B2C pages — built on one consistent brand system. That's exactly the kind of [B2B and B2C website design](/#services) we specialize in.
 
 If you genuinely serve both, resist the urge to average them into one page that vaguely addresses everyone. Split the paths early — distinct entry points, distinct proof, distinct calls to action — on a shared foundation of brand, speed, and craft. A homepage that tries to speak to a consumer and a procurement manager in the same sentence persuades neither.
 
@@ -109,7 +109,7 @@ Different, not harder. B2C is brutally unforgiving on execution — a half-secon
 
 ### Should a B2B website show pricing?
 
-Show something. Full transparency isn't always possible, but "Contact us" as the only answer loses buyers who are building a shortlist and need a figure to justify including you. A starting price, a range, or a clear description of what drives the cost keeps you in the running without locking you into a number. Our own [pricing guide](/blog/website-cost-malaysia) takes exactly that approach, and it's the one we'd recommend.
+Show something. Full transparency isn't always possible, but "Contact us" as the only answer loses buyers who are building a shortlist and need a figure to justify including you. A starting price, a range, or a clear description of what drives the cost keeps you in the running without locking you into a number. Our own [pricing guide](/blog/website-cost) takes exactly that approach, and it's the one we'd recommend.
 
 ### Do B2B websites still need to look good?
 

@@ -13,7 +13,7 @@ draft: false
 
 Most business websites are brochures. They tell visitors who you are, what you offer, and how to get in touch — and then hand the actual work back to you and your inbox. For a lot of businesses, that's fine. For a growing number, it's the bottleneck.
 
-A website that *works like software* does more than describe your business. It runs part of it — taking bookings, generating quotes, showing clients their status — while you sleep. The difference isn't technical sophistication for its own sake. It's whether the site is a cost centre that generates admin, or an asset that removes it.
+A website that *works like software* does more than describe your business. It runs part of it — taking bookings, generating quotes, showing clients their status — while you sleep. The difference isn't technical sophistication for its own sake. It's whether the site is a cost center that generates admin, or an asset that removes it.
 
 Here's how to tell which one you need.
 
@@ -21,7 +21,7 @@ Here's how to tell which one you need.
 
 The line is simple: a brochure site *informs*, a software-like site *does*. The moment your website can complete a task a customer or your team would otherwise do by hand, it stops being marketing and starts being infrastructure.
 
-That shift changes how you should judge it, too. You measure a brochure site by traffic and enquiries. You measure a software-like site by hours saved, jobs booked without a phone call, and errors that stopped happening. Same website, completely different scoreboard.
+That shift changes how you should judge it, too. You measure a brochure site by traffic and inquiries. You measure a software-like site by hours saved, jobs booked without a phone call, and errors that stopped happening. Same website, completely different scoreboard.
 
 ## The four things websites usually end up doing
 
@@ -35,11 +35,11 @@ The reminder piece is the quiet winner here. No-shows are a silent tax on servic
 
 ### Instant quoting
 
-If your pricing follows rules — even complicated ones — a visitor can get a number without waiting for you. Square metres, service tier, distance, add-ons, urgency: if you can describe how you price, it can be built.
+If your pricing follows rules — even complicated ones — a visitor can get a number without waiting for you. Square footage, service tier, distance, add-ons, urgency: if you can describe how you price, it can be built.
 
 Two things happen when you do this. Serious buyers get an answer while they're still interested, instead of drifting to whoever replies first. And you stop spending your evenings writing quotes for people who were never going to proceed once they heard the price. It qualifies leads *and* it closes them.
 
-If the quote flows into an actual invoice, note that this is now regulated territory in Malaysia: LHDN's [MyInvois e-invoicing mandate](https://myinvois.hasil.gov.my/) is being phased in by revenue band. That's an argument for letting a compliant accounting tool issue the invoice while your custom flow handles the quoting — not for building your own tax infrastructure.
+If the quote flows into an actual invoice, remember you've crossed into regulated territory — sales tax across thousands of jurisdictions, and IRS reporting rules like [Form 1099-K](https://www.irs.gov/businesses/understanding-your-form-1099-k) that have been revised repeatedly. That's an argument for letting a compliant accounting tool issue the invoice while your custom flow handles the quoting, not for building your own tax infrastructure.
 
 ### Client dashboards
 
@@ -69,7 +69,7 @@ That last one is the real tell. In a healthy business, doubling revenue should n
 
 > If your website makes work for you instead of doing work for you, it's underbuilt.
 
-## The maths: does it actually pay for itself?
+## The math: does it actually pay for itself?
 
 This is the question worth answering before you build anything, and it's simpler than people expect.
 
@@ -105,7 +105,7 @@ Sometimes that's genuinely all you need, and if a plugin fits your workflow clea
 
 ### How much does a website that works like software cost?
 
-More than a brochure site, because it's genuinely a different product — you're commissioning software, not pages. Custom functionality typically starts where standard website budgets end, and scales with how complex the rules are. Our [website pricing guide](/blog/website-cost-malaysia) sets out the honest bands, including where the line sits between the two.
+More than a brochure site, because it's genuinely a different product — you're commissioning software, not pages. Custom functionality typically starts where standard website budgets end, and scales with how complex the rules are. Our [website pricing guide](/blog/website-cost) sets out the honest bands, including where the line sits between the two.
 
 ### Do I need to replace my existing website?
 

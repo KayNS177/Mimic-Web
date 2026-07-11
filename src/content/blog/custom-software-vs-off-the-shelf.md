@@ -21,7 +21,9 @@ Here's how we think about it.
 
 For solved, universal problems, off-the-shelf is usually the right call. Email, accounting, payments, calendars, payroll — these are commodities. Building your own would be reinventing a wheel that thousands of engineers have already perfected, and that a regulator will make you rebuild every time the rules change.
 
-Malaysian businesses have a live example of exactly this. LHDN's [MyInvois e-invoicing mandate](https://myinvois.hasil.gov.my/) is being phased in by revenue band, with specific field requirements and digital signing rules — and the thresholds and deadlines have already shifted more than once. If you had built your own invoicing system, every one of those changes would be your problem, on the regulator's timetable. Because you almost certainly didn't, it's your accounting vendor's problem, and it arrives as a software update. That is precisely what you are paying them for.
+Payments reporting is a live example of exactly this. The IRS reporting threshold for [Form 1099-K](https://www.irs.gov/businesses/understanding-your-form-1099-k) — the form that covers payment-card and third-party network transactions — has been changed, delayed, and revised repeatedly over the past few years. If you had built your own payments and invoicing system, every one of those revisions would be your problem, on the regulator's timetable. Because you almost certainly didn't, it's your accounting vendor's problem, and it arrives as a software update. That is precisely what you are paying them for.
+
+Sales tax is the same story, only worse. There are thousands of taxing jurisdictions in the US, rates change constantly, and economic nexus rules mean selling into a state can create an obligation you didn't know you had. Nobody should be maintaining that table by hand.
 
 Off-the-shelf is the right answer when:
 
@@ -100,7 +102,7 @@ It sounds like a detail. It's the whole game. A tool that holds your customer re
 
 The businesses that get trapped aren't the ones that chose badly. They're the ones that chose reasonably, grew, and then discovered that five years of operational history lives inside a system they've outgrown and can't leave without losing it.
 
-If you serve European customers, [GDPR's right to data portability](https://gdpr-info.eu/art-20-gdpr/) obliges vendors to hand over personal data in a structured, machine-readable format on request — which helps, but only partly. It covers *your customers' personal data*, not your operational history: your job records, your pricing logic, your five years of quotes. The stuff that's hardest to rebuild is usually the stuff no regulation compels anyone to give back to you.
+Privacy law helps a little here, but less than you'd hope. California's [CCPA](https://oag.ca.gov/privacy/ccpa) gives consumers a right to receive their personal information in a readily usable format, and if you have European customers, [GDPR Article 20](https://gdpr-info.eu/art-20-gdpr/) goes further. But both cover *your customers' personal data* — not your operational history: your job records, your pricing logic, your five years of quotes. The stuff that's hardest to rebuild is exactly the stuff no regulation compels anyone to give back to you.
 
 Two rules protect you:
 
@@ -115,7 +117,7 @@ We're not here to sell you software you don't need — most businesses need a mi
 
 Often that's a booking flow, a client dashboard, or an integration that makes your existing tools finally talk to each other. Sometimes the conversation ends with us telling you that your current stack is fine and the problem is a process, not a product. That's a cheaper answer, and it's a real one.
 
-Either way, we handle the whole thing end to end, so you get a solution shaped around your business without the technical headaches — whether you run [B2B or B2C](/blog/b2b-vs-b2c-web-design). And if the first question on your mind is what any of this costs, our [website pricing guide](/blog/website-cost-malaysia) lays out the real ranges.
+Either way, we handle the whole thing end to end, so you get a solution shaped around your business without the technical headaches — whether you run [B2B or B2C](/blog/b2b-vs-b2c-web-design). And if the first question on your mind is what any of this costs, our [website pricing guide](/blog/website-cost) lays out the real ranges.
 
 ## Common questions
 

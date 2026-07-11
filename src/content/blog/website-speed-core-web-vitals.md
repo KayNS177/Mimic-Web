@@ -12,7 +12,7 @@ draft: false
 
 "Why is my website slow?" is usually asked as a technical question. It's really a revenue question. If your website is slow, you're not losing visitors at the bottom of the funnel — you're losing them before the funnel starts, in the two or three seconds where a customer decides whether this page is worth their attention. They don't email you to complain. They just leave, and you never find out they were there.
 
-Google turned that instinct into three measurable numbers called **Core Web Vitals**. They're a [confirmed ranking signal](https://developers.google.com/search/docs/appearance/core-web-vitals), but that undersells them: they're the closest thing you have to a readout of how your site *feels* to a real person on a real phone on real Malaysian mobile data.
+Google turned that instinct into three measurable numbers called **Core Web Vitals**. They're a [confirmed ranking signal](https://developers.google.com/search/docs/appearance/core-web-vitals), but that undersells them: they're the closest thing you have to a readout of how your site *feels* to a real person on a real phone on a real cellular connection.
 
 Here's what each one measures, why sites fail it, and what actually fixes it.
 
@@ -24,7 +24,7 @@ Here's what each one measures, why sites fail it, and what actually fixes it.
 - **INP — Interaction to Next Paint.** When someone taps a button, how long before the page visibly responds. *Good: under 200 milliseconds.* INP [replaced First Input Delay](https://web.dev/articles/inp) as an official Core Web Vital in March 2024, and it's stricter.
 - **CLS — Cumulative Layout Shift.** How much the page jumps around while loading. *Good: under 0.1.*
 
-One detail almost everyone misses: Google grades you at the **75th percentile of real visitors**, not on a lab test. Three out of four people need a good experience for you to pass. Your site feeling fast on your office fibre connection and your new iPhone means nothing — that's the best case, and Google is grading closer to the worst one.
+One detail almost everyone misses: Google grades you at the **75th percentile of real visitors**, not on a lab test. Three out of four people need a good experience for you to pass. Your site feeling fast on your office fiber connection and your new iPhone means nothing — that's the best case, and Google is grading closer to the worst one.
 
 ## LCP: your page takes too long to show up
 
@@ -77,7 +77,7 @@ Then check the same URL in **Google Search Console** under Core Web Vitals for a
 
 ## Speed is a build decision, not a plugin
 
-Here's the uncomfortable part: you can't reliably bolt performance onto a site that wasn't built for it. Caching plugins buy you a little. But if the theme ships 800KB of JavaScript for a carousel you don't use, if every section is a page-builder wrapper inside a wrapper, if the hosting is slow — you're optimising around a problem that was baked in on day one.
+Here's the uncomfortable part: you can't reliably bolt performance onto a site that wasn't built for it. Caching plugins buy you a little. But if the theme ships 800KB of JavaScript for a carousel you don't use, if every section is a page-builder wrapper inside a wrapper, if the hosting is slow — you're optimizing around a problem that was baked in on day one.
 
 That's why we build [custom sites rather than templates](/blog/custom-software-vs-off-the-shelf): the fastest way to load less code is to never write it. We ship what the page needs and nothing else, size and compress every image at build time, and deploy to a CDN so the page starts arriving immediately, wherever the visitor is. Fast isn't a phase at the end of the project. It's a consequence of decisions made at the start — the same way [a homepage converts because of how it was structured](/blog/homepage-conversion), not because of what was added later.
 
@@ -101,6 +101,6 @@ Partly, and it's usually the right first move on an existing site. But caching s
 
 ### How much does it cost to fix a slow website?
 
-It depends entirely on why it's slow. Compressing images and removing dead third-party scripts is often an afternoon's work with an immediate payoff. Re-engineering a bloated page-builder theme is a rebuild wearing a different name, and at that point you're weighing it against the cost of [building the site properly](/blog/website-cost-malaysia) — usually the better investment, because you also fix everything else that was baked in on day one.
+It depends entirely on why it's slow. Compressing images and removing dead third-party scripts is often an afternoon's work with an immediate payoff. Re-engineering a bloated page-builder theme is a rebuild wearing a different name, and at that point you're weighing it against the cost of [building the site properly](/blog/website-cost) — usually the better investment, because you also fix everything else that was baked in on day one.
 
 Want to know why your site is slow — and what it'd take to fix? [Get a free consultation](/#quote) and we'll run the numbers with you.

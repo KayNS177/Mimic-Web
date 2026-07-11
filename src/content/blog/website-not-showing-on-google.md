@@ -23,7 +23,7 @@ Search Google for `site:yourdomain.com` (your actual domain, no spaces after the
 - **No results at all?** Google doesn't know your site exists. That's an *indexing* problem — reasons 1 to 4 below.
 - **Your pages are listed, but you still can't find them when you search normally?** Google knows you exist and has decided you're not the best answer. That's a *ranking* problem — reasons 5 to 9.
 
-Most people jump straight to writing blog posts and buying backlinks when they actually have an indexing problem. Don't optimise a page Google can't see.
+Most people jump straight to writing blog posts and buying backlinks when they actually have an indexing problem. Don't optimize a page Google can't see.
 
 ## 1. Google hasn't found your site yet
 
@@ -47,13 +47,13 @@ If your site is built so that the content only appears after JavaScript runs, an
 
 If you're a local business and you're not appearing in the map results, this is why. The Map Pack — the block of three businesses with a map at the top of local searches — runs *entirely* on Google Business Profiles. No profile, no listing. Your website has nothing to do with it.
 
-**Fix:** Claim and verify your [Google Business Profile](https://www.google.com/business/). Fill in every field, choose accurate categories, add real photos, and keep your name, address, and phone number *character-for-character identical* everywhere they appear online. "Jalan Sultan" on your site and "Jln. Sultan" on your profile is enough to muddy the signal.
+**Fix:** Claim and verify your [Google Business Profile](https://www.google.com/business/). Fill in every field, choose accurate categories, add real photos, and keep your name, address, and phone number *character-for-character identical* everywhere they appear online. "123 Main Street, Suite 4" on your site and "123 Main St #4" on your profile is enough to muddy the signal.
 
 ## 5. Your pages don't use the words your customers search
 
 This is the big one, and it's the reason most well-built sites still get no traffic. Businesses write about themselves in their own language. Customers search in theirs.
 
-Your homepage says *"Bespoke digital solutions for the modern enterprise."* Your customer types *"web designer near me"* or *"e-commerce website Malaysia."* Google is a matching engine, and there is nothing here to match.
+Your homepage says *"Bespoke digital solutions for the modern enterprise."* Your customer types *"web designer near me"* or *"ecommerce website developer."* Google is a matching engine, and there is nothing here to match.
 
 **Fix:** Write down the five things a customer would actually type to find you. Boring, literal phrases. Then check whether those exact words appear in your page titles, your headings, and your body copy. Usually they don't appear anywhere on the site at all.
 
@@ -77,7 +77,7 @@ Your page title is the strongest on-page signal you control, and it's the blue l
 
 Links from other sites are still how Google judges whether anyone else considers you credible. A site with zero inbound links is a site with zero external votes, and in a competitive search it will lose to a rival who has ten — even if your site is better.
 
-**Fix:** Start with the easy, legitimate ones. Business directories, your industry association, your suppliers' partner pages, the chamber of commerce, local press, the podcast you went on. You are not trying to game anything; you're trying to be *findable* from the places your industry already lives. Ignore anyone selling you a thousand backlinks for RM200 — that's how sites get penalised.
+**Fix:** Start with the easy, legitimate ones. Business directories, your industry association, your suppliers' partner pages, the chamber of commerce, local press, the podcast you went on. You are not trying to game anything; you're trying to be *findable* from the places your industry already lives. Ignore anyone selling you a thousand backlinks for $50 — that's how sites get penalized.
 
 ## 9. You're expecting it to happen quickly
 
@@ -108,7 +108,7 @@ Indexing — Google simply *knowing you exist* — usually takes a few days to a
 
 ### Why does my website show up when I search my business name, but not for my services?
 
-That's the classic signature of a *ranking* problem, not an indexing one. Google knows you exist and will happily show you for a query only you could match — your own name. It just doesn't believe you're the best answer for "web designer in Kuala Lumpur," where forty other pages are competing. The fix is reasons 5 through 8 above: use the words customers actually type, give each service its own page, and earn some links.
+That's the classic signature of a *ranking* problem, not an indexing one. Google knows you exist and will happily show you for a query only you could match — your own name. It just doesn't believe you're the best answer for "web designer in Austin," where forty other pages are competing. The fix is reasons 5 through 8 above: use the words customers actually type, give each service its own page, and earn some links.
 
 ### Do I need to pay Google to appear in search results?
 
@@ -120,6 +120,6 @@ Indirectly, and more than people expect. Google measures how real visitors exper
 
 ### Should I hire someone, or can I do this myself?
 
-The four fundamentals at the top of this section are genuinely DIY, and you should do them yourself before paying anyone — no agency should charge you for work that takes an afternoon. Where outside help earns its keep is the structural stuff: the technical foundations, the site architecture, and the content strategy that follows. If you're weighing that up, our [website pricing guide](/blog/website-cost-malaysia) sets out what that work actually costs.
+The four fundamentals at the top of this section are genuinely DIY, and you should do them yourself before paying anyone — no agency should charge you for work that takes an afternoon. Where outside help earns its keep is the structural stuff: the technical foundations, the site architecture, and the content strategy that follows. If you're weighing that up, our [website pricing guide](/blog/website-cost) sets out what that work actually costs.
 
 Not sure whether you have an indexing problem or a ranking problem? [Get a free consultation](/#quote) and we'll take a look at your site with you.

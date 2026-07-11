@@ -15,7 +15,7 @@ People judge a website's credibility in about 50 milliseconds — faster than th
 
 That first impression is almost entirely visual, and it decides whether a visitor leans in or bounces. This is why **professional web design** is really trust engineering: the design has to earn confidence before a single word is read.
 
-It gets starker. In research into why people reject websites, the overwhelming majority of reasons given for *mistrusting* a site were design-related — layout, typography, and visual clutter — rather than anything to do with the actual content. And through the *halo effect*, that snap judgment colours how visitors rate everything else: your credibility, your prices, even your competence at the thing you actually sell.
+It gets starker. In research into why people reject websites, the overwhelming majority of reasons given for *mistrusting* a site were design-related — layout, typography, and visual clutter — rather than anything to do with the actual content. And through the *halo effect*, that snap judgment colors how visitors rate everything else: your credibility, your prices, even your competence at the thing you actually sell.
 
 The good news is that the details that build trust aren't expensive or flashy. They're the quiet, consistent choices most websites skip — and getting them right is the difference between a site that looks credible and one that quietly loses customers.
 
@@ -24,12 +24,12 @@ The good news is that the details that build trust aren't expensive or flashy. T
 Nothing erodes trust faster than a website that feels assembled by three different people. Mismatched spacing, five shades of blue, and buttons that change shape page to page all signal the same thing: *if they're careless here, what about the work?*
 
 - One type scale, used everywhere.
-- One accent colour, applied with intent.
+- One accent color, applied with intent.
 - Consistent spacing, so nothing feels accidental.
 
 Consistency is invisible when it's right and glaring when it's wrong. Nobody has ever left a website thinking "what beautifully consistent margins" — but they *do* leave thinking "something about this feels off," and this is usually what they mean. Trust is built by the absence of small wrong notes, not the presence of impressive ones.
 
-The practical fix is a design system rather than a designer's memory: a fixed set of spacing values, type sizes, and colours that every page is built from. It removes the thousand tiny decisions where inconsistency creeps in.
+The practical fix is a design system rather than a designer's memory: a fixed set of spacing values, type sizes, and colors that every page is built from. It removes the thousand tiny decisions where inconsistency creeps in.
 
 ## 2. Whitespace signals confidence
 
@@ -39,7 +39,7 @@ Cramped layouts feel anxious, like they're trying to sell everything at once. Ge
 
 Give your headline room. Let sections breathe. The restraint reads as premium.
 
-There's a business reason this is hard: whitespace is the first thing sacrificed when everyone wants their section higher up the page. The result is a homepage where nothing is emphasised because everything is. Whitespace is how a page communicates hierarchy, and hierarchy is how a visitor knows what to look at first. Crowding is not just an aesthetic failure — it's a failure to guide.
+There's a business reason this is hard: whitespace is the first thing sacrificed when everyone wants their section higher up the page. The result is a homepage where nothing is emphasized because everything is. Whitespace is how a page communicates hierarchy, and hierarchy is how a visitor knows what to look at first. Crowding is not just an aesthetic failure — it's a failure to guide.
 
 ## 3. Custom-built, not templated
 
@@ -47,7 +47,7 @@ A website that's visibly a generic template quietly signals that your business i
 
 Visitors can't always name what gives a template away, but they reliably sense it: the stock hero image, the three-column feature row with the same icons everyone uses, the layout they've seen on four other sites this week. Familiarity isn't inherently bad — conventions help people navigate — but *anonymity* is. If your site could belong to any company in any industry, it isn't doing any work for you.
 
-It costs more than a theme, though usually less than people assume — here's [what a custom website actually costs](/blog/website-cost-malaysia).
+It costs more than a theme, though usually less than people assume — here's [what a custom website actually costs](/blog/website-cost).
 
 ## 4. Mobile-first, responsive design
 
@@ -61,7 +61,7 @@ Test on a real phone, not a browser window you've dragged narrow. They are not t
 
 Crisp, comfortably sized type is one of the cheapest trust upgrades available. If people have to squint or fight cramped line lengths, the content feels amateur no matter how good it is.
 
-The specifics matter more than the font choice: body text around 16–18px, line height near 1.5, and line lengths of roughly 60–75 characters. Longer lines make the eye lose its place on the return sweep; shorter ones chop the rhythm. Low-contrast grey-on-grey text is the most common self-inflicted wound here — it looks elegant in a design tool and becomes unreadable in daylight on a phone.
+The specifics matter more than the font choice: body text around 16–18px, line height near 1.5, and line lengths of roughly 60–75 characters. Longer lines make the eye lose its place on the return sweep; shorter ones chop the rhythm. Low-contrast gray-on-gray text is the most common self-inflicted wound here — it looks elegant in a design tool and becomes unreadable in daylight on a phone.
 
 Good typography isn't noticed. Bad typography is *felt* as effort, and effort is the thing visitors are least willing to spend.
 
@@ -95,7 +95,7 @@ Yes, and it's one of the better-evidenced findings in web usability. Credibility
 
 ### What's the fastest way to make a website look more credible?
 
-Fix typography and spacing before anything else. They're the cheapest changes available and they carry a disproportionate share of the "does this look professional" signal. Bigger body text, more line height, more whitespace, and one consistent accent colour will do more for perceived credibility than a new logo, and can usually be done in a day.
+Fix typography and spacing before anything else. They're the cheapest changes available and they carry a disproportionate share of the "does this look professional" signal. Bigger body text, more line height, more whitespace, and one consistent accent color will do more for perceived credibility than a new logo, and can usually be done in a day.
 
 ### Do these details matter for B2B, or only consumer sites?
 

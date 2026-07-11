@@ -61,7 +61,7 @@ Layer in [fast load times](/blog/website-speed-core-web-vitals) and clean, mobil
 
 ## Make proof specific enough to be falsifiable
 
-Proof is where most homepages get lazy. "Trusted by industry leaders" proves nothing. "We increased their enquiries by 60% in four months" proves something, because it's specific enough that it *could* be wrong — which is exactly what makes it believable.
+Proof is where most homepages get lazy. "Trusted by industry leaders" proves nothing. "We increased their inquiries by 60% in four months" proves something, because it's specific enough that it *could* be wrong — which is exactly what makes it believable.
 
 The hierarchy of proof, from weakest to strongest:
 
@@ -86,13 +86,13 @@ Two details that matter more than people expect:
 
 ## Design for both B2B and B2C visitors
 
-Conversion psychology shifts depending on who's buying. A B2C shopper often decides in one visit; a B2B buyer decides over weeks, in committee. Your homepage should match that buying behaviour — see our full breakdown of [B2B vs B2C web design](/blog/b2b-vs-b2c-web-design) for the specifics.
+Conversion psychology shifts depending on who's buying. A B2C shopper often decides in one visit; a B2B buyer decides over weeks, in committee. Your homepage should match that buying behavior — see our full breakdown of [B2B vs B2C web design](/blog/b2b-vs-b2c-web-design) for the specifics.
 
-The practical consequence: a B2C homepage is optimised for *momentum*, so you remove every possible obstacle between wanting and buying. A B2B homepage is optimised for *confidence*, so you give your champion the material they need to argue your case internally when you're not in the room. Same craft, opposite emphasis.
+The practical consequence: a B2C homepage is optimized for *momentum*, so you remove every possible obstacle between wanting and buying. A B2B homepage is optimized for *confidence*, so you give your champion the material they need to argue your case internally when you're not in the room. Same craft, opposite emphasis.
 
 ## Measure, then improve
 
-Design opinions are cheap. Behaviour is truth. Before you redesign anything, instrument the page and watch what real visitors do:
+Design opinions are cheap. Behavior is truth. Before you redesign anything, instrument the page and watch what real visitors do:
 
 ```js
 // The three questions every homepage should answer with data
@@ -119,7 +119,7 @@ A landing page, nearly always. Ad traffic arrives with a specific expectation se
 
 ### How do I know if my homepage is underperforming?
 
-Compare its conversion rate to itself over time rather than to an industry benchmark — benchmarks are collected from businesses with different traffic and different offers, and they'll mislead you. The stronger signals are behavioural: high traffic and low enquiries, most visitors leaving before the first scroll, or enquiries arriving from people who clearly misunderstood what you sell. That last one means the page is attracting, but not filtering.
+Compare its conversion rate to itself over time rather than to an industry benchmark — benchmarks are collected from businesses with different traffic and different offers, and they'll mislead you. The stronger signals are behavioral: high traffic and low inquiries, most visitors leaving before the first scroll, or inquiries arriving from people who clearly misunderstood what you sell. That last one means the page is attracting, but not filtering.
 
 ### Does design or copy matter more for conversion?
 
