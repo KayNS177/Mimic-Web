@@ -36,6 +36,7 @@ export function readAllPosts() {
         category: meta.category || 'General',
         author: resolveAuthor(meta.author),
         date: meta.date || '',
+        updated: meta.updated || '',
         readTime: meta.readTime || '',
         body: m[2],
       };

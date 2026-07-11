@@ -115,6 +115,11 @@ export function articleMeta(post) {
         headline: post.title,
         description: post.excerpt,
         datePublished: post.date,
+        // Freshness signal. Falls back to the publish date when a post has never
+        // been revised, so it is always present.
+        dateModified: post.updated || post.date,
+        articleSection: post.category,
+        inLanguage: 'en',
         image: ogImage,
         author: {
           '@type': 'Person',
