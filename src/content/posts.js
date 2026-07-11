@@ -4,8 +4,9 @@
  * Posts live as Markdown files with YAML-ish frontmatter in ./blog/*.md and are
  * loaded at build time via Vite's import.meta.glob. No CMS, no runtime fetch.
  *
- * Frontmatter fields: title, slug, excerpt, category, author, date, readTime,
- * coverImage, draft.
+ * Frontmatter fields: title, slug, excerpt, category, author, date, updated,
+ * readTime, coverImage, draft. `updated` is optional and feeds schema.org
+ * dateModified; omit it until a post is actually revised.
  */
 
 import { resolveAuthor } from './authors.js';
@@ -37,6 +38,7 @@ function parse(raw) {
     category: meta.category || 'General',
     author: resolveAuthor(meta.author),
     date: meta.date || '',
+    updated: meta.updated || '',
     readTime: meta.readTime || '',
     coverImage: meta.coverImage || '',
     draft: meta.draft === 'true',
