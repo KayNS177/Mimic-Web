@@ -79,7 +79,7 @@ Then check the same URL in **Google Search Console** under Core Web Vitals for a
 
 Here's the uncomfortable part: you can't reliably bolt performance onto a site that wasn't built for it. Caching plugins buy you a little. But if the theme ships 800KB of JavaScript for a carousel you don't use, if every section is a page-builder wrapper inside a wrapper, if the hosting is slow — you're optimizing around a problem that was baked in on day one.
 
-That's why we build [custom sites rather than templates](/blog/custom-software-vs-off-the-shelf): the fastest way to load less code is to never write it. We ship what the page needs and nothing else, size and compress every image at build time, and deploy to a CDN so the page starts arriving immediately, wherever the visitor is. Fast isn't a phase at the end of the project. It's a consequence of decisions made at the start — the same way [a homepage converts because of how it was structured](/blog/homepage-conversion), not because of what was added later.
+That's why we build [custom sites rather than templates](/blog/wordpress-vs-custom-website): the fastest way to load less code is to never write it. We ship what the page needs and nothing else, size and compress every image at build time, and deploy to a CDN so the page starts arriving immediately, wherever the visitor is. Fast isn't a phase at the end of the project. It's a consequence of decisions made at the start — the same way [a homepage converts because of how it was structured](/blog/homepage-conversion), not because of what was added later.
 
 ## Common questions about website speed
 

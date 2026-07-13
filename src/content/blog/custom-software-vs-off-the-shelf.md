@@ -117,6 +117,8 @@ We're not here to sell you software you don't need — most businesses need a mi
 
 Often that's a booking flow, a client dashboard, or an integration that makes your existing tools finally talk to each other. Sometimes the conversation ends with us telling you that your current stack is fine and the problem is a process, not a product. That's a cheaper answer, and it's a real one.
 
+The same build-or-buy trade-off shows up one level down, in the website itself — the [WordPress versus custom build question](/blog/wordpress-vs-custom-website) is this article's argument applied to your public site rather than your internal tools.
+
 Either way, we handle the whole thing end to end, so you get a solution shaped around your business without the technical headaches — whether you run [B2B or B2C](/blog/b2b-vs-b2c-web-design). And if the first question on your mind is what any of this costs, our [website pricing guide](/blog/website-cost) lays out the real ranges.
 
 ## Common questions

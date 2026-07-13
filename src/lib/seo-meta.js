@@ -38,6 +38,63 @@ function image(url) {
   return { image: url, imageWidth: IMG_W, imageHeight: IMG_H };
 }
 
+/** Strip the inline Markdown a plain-text schema value can't carry. */
+function stripInline(text) {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\*\*([^*]+)\*\*/g, '$1')
+    .replace(/\*([^*]+)\*/g, '$1')
+    .replace(/`([^`]+)`/g, '$1')
+    .trim();
+}
+
+/**
+ * Pull the "Common questions" section of a post into FAQPage Q&A pairs.
+ *
+ * Each `### question` takes only its first paragraph as the answer, which keeps
+ * the closing call-to-action (a separate paragraph after the last answer) out of
+ * the schema. Returns [] for posts with no such section.
+ */
+export function faqFromBody(body = '') {
+  // heading varies: "Common questions", "Common questions about website costs", …
+  const section = body.split(/^##\s+Common questions\b.*$/im)[1];
+  if (!section) return [];
+
+  const faqs = [];
+  // stop at the next h2, so anything after the FAQ section is ignored
+  const upToNextH2 = section.split(/^##\s+/m)[0];
+  const parts = upToNextH2.split(/^###\s+/m).slice(1);
+
+  for (const part of parts) {
+    const lines = part.split('\n');
+    const question = stripInline(lines.shift() || '');
+    while (lines.length && !lines[0].trim()) lines.shift();
+    const answer = [];
+    for (const line of lines) {
+      if (!line.trim()) break;
+      answer.push(line.trim());
+    }
+    const text = stripInline(answer.join(' '));
+    if (question && text) faqs.push({ question, answer: text });
+  }
+  return faqs;
+}
+
+function faqPage(post, url) {
+  const faqs = faqFromBody(post.body);
+  if (!faqs.length) return null;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${url}#faq`,
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+}
+
 export function homeMeta() {
   // No title here — index.html keeps its static <title>. These re-affirm the
   // data-rh tags so react-helmet-async doesn't strip them on the client.
@@ -139,7 +196,8 @@ export function articleMeta(post) {
         { name: 'Blog', url: `${SITE}/blog` },
         { name: post.title, url },
       ]),
-    ],
+      faqPage(post, url),
+    ].filter(Boolean),
   };
 }
 

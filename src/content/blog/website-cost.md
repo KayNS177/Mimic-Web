@@ -60,7 +60,7 @@ Cheap isn't automatically bad and expensive isn't automatically good. What matte
 
 **A cheap site is usually a template.** Someone buys a theme, drops your logo and text into it, and hands it over. For a business that just needs to exist online — a phone number, a location, some proof you're real — that can be a completely reasonable purchase. Don't let anyone shame you out of it if that's genuinely all you need.
 
-**An expensive site is usually a custom one.** The layout is designed around your actual offer instead of around a theme's demo content. It loads fast because someone made it fast. It ranks because the technical SEO was built in rather than bolted on. And often it *does* something — takes bookings, generates quotes, shows clients their status — rather than just describing what you do.
+**An expensive site is usually a custom one.** The layout is designed around your actual offer instead of around a theme's demo content — a trade-off worth understanding properly before you spend, which is why we compared [WordPress and a custom build side by side](/blog/wordpress-vs-custom-website). It loads fast because someone made it fast. It ranks because the technical SEO was built in rather than bolted on. And often it *does* something — takes bookings, generates quotes, shows clients their status — rather than just describing what you do.
 
 **An overpriced site is a cheap site with an expensive invoice.** The tells are consistent: no discovery call, a quote that arrives before anyone asked what your business does, a portfolio where every site has the same layout, and vague deliverables ("SEO optimization" with no specifics). Price isn't the warning sign. Vagueness is.
 
