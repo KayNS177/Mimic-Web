@@ -8,7 +8,10 @@ import {
   useTransform,
 } from 'motion/react';
 import BlurText from './BlurText.jsx';
-import Starfield from './Starfield.jsx';
+import Particles from './Particles.jsx';
+
+// module-level so the reference stays stable across renders
+const PARTICLE_COLORS = ['#ffffff'];
 
 const STEPS = [
   { title: 'Discovery Call', body: 'Understanding your vision, goals, and audience.' },
@@ -97,7 +100,27 @@ export default function StartSection() {
       style={{ height: `${100 + (STEPS.length - 1) * 55}vh` }}
     >
       <div className="sticky top-0 h-screen overflow-hidden">
-        <Starfield />
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            maskImage: 'linear-gradient(to bottom, transparent 0%, black 8%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 8%)',
+          }}
+        >
+          <Particles
+            particleCount={820}
+            particleSpread={10}
+            speed={0.2}
+            particleColors={PARTICLE_COLORS}
+            moveParticlesOnHover
+            particleHoverFactor={0.15}
+            alphaParticles={false}
+            particleBaseSize={50}
+            sizeRandomness={1}
+            cameraDistance={21}
+            disableRotation
+          />
+        </div>
         <div className="relative z-10 h-full flex flex-col items-center text-center px-6 pt-24 md:pt-28">
           <span className="liquid-glass rounded-full px-3.5 py-1 text-xs font-medium text-white font-body">
             How It Works
