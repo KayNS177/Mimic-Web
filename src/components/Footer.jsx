@@ -44,8 +44,8 @@ export default function Footer({ theme = 'dark' }) {
   };
 
   return (
-    <footer className={`relative w-full px-6 pt-24 pb-10 border-t ${c.border}`}>
-      <div className="mx-auto max-w-7xl">
+    <footer className={`relative w-full px-8 lg:px-16 pt-24 pb-10 border-t ${c.border}`}>
+      <div className="w-full">
         <div className="flex flex-col md:flex-row gap-10 md:gap-8">
           <div className="flex flex-col gap-4 md:max-w-sm">
             <a href="/#home" className="inline-flex items-center">
